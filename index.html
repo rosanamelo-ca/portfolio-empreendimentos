@@ -6,11 +6,11 @@
     <title>Catálogo de Construtoras</title>
     <style>
       :root {
-        --primary: #1f2937;
-        --secondary: #3b82f6;
-        --bg: #f9fafb;
+        --primary: #ff710d;
+        --secondary: #052147;
+        --bg: #fff8f2;
         --card: #ffffff;
-        --text: #111827;
+        --text: #052147;
         --muted: #6b7280;
         --radius: 16px;
       }
@@ -47,7 +47,7 @@
       }
 
       .login-logo {
-        max-width: 160px;
+        max-width: 190px;
         margin: 0 auto 16px;
       }
 
@@ -83,7 +83,7 @@
         padding: 12px;
         border-radius: var(--radius);
         border: none;
-        background: var(--secondary);
+        background: var(--primary);
         color: #fff;
         font-size: 0.95rem;
         font-weight: 600;
@@ -158,6 +158,7 @@
       }
 
       .card {
+        min-width: 0;
         background: var(--card);
         border-radius: var(--radius);
         padding: 16px;
@@ -186,31 +187,47 @@
       }
 
       .card a {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        max-width: 100%;
+        padding: 10px 14px;
+        border-radius: 12px;
         text-decoration: none;
         color: #fff;
-        background: var(--secondary);
-        padding: 10px 14px; /* tamanho original */
-        border-radius: 12px;
+        background: var(--primary);
         font-size: 0.85rem;
         font-weight: 600;
-        align-self: flex-start; /* evita botão esticado */
+        line-height: 1.4;
+        text-align: center;
+        overflow-wrap: anywhere;
+        transition: background-color 0.15s ease;
+      }
+
+      .card a:hover,
+      .login-card button:hover {
+        background: #ff8b39;
+        color: #fff;
+      }
+
+      .card a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--primary);
+        outline-offset: 3px;
       }
 
       .card-actions {
         display: flex;
-        gap: 8px; /* espaço entre os botões */
-        flex-wrap: wrap; /* quebra linha se faltar espaço no mobile */
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: 8px;
+        margin-top: auto;
       }
 
       .card-actions a {
-        padding: 10px 14px;
-        border-radius: 12px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-decoration: none;
-        color: #fff;
-        background: var(--secondary);
+        flex: 0 1 auto;
+        min-width: 0;
       }
 
       @media (min-width: 640px) {
@@ -223,6 +240,117 @@
         .grid {
           grid-template-columns: repeat(3, 1fr);
         }
+      }
+      /* Controles confortáveis para toque e layout pensado primeiro no celular. */
+      body { padding: 12px; line-height: 1.5; }
+      #app { max-width: 1200px; margin: 0 auto; }
+      .login-container { min-height: calc(100svh - 24px); }
+      .login-card { border-top: 5px solid var(--primary); }
+      .login-card input, .search input { font-size: 16px; min-height: 48px; }
+      input:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+      .login-card button { min-height: 48px; }
+      .top-actions { gap: 12px; align-items: flex-start; }
+      header { gap: 10px; margin-bottom: 0; min-width: 0; }
+      header h1 { font-size: 1.15rem; line-height: 1.25; }
+      .header-logo { flex-shrink: 0; }
+      .header-logo img { width: auto; max-width: 96px; height: auto; max-height: 56px; }
+      .logout { min-width: 48px; min-height: 48px; flex-shrink: 0; }
+      .favorites-intro { background: var(--secondary); color: white; border-radius: 16px; padding: 18px; margin-bottom: 16px; }
+      .favorites-intro h2 { font-size: 1.2rem; margin-bottom: 6px; }
+      .favorites-intro p { font-size: 0.9rem; }
+      .favorites-intro strong { color: #ff9e58; }
+      .reset-favorites { margin-top: 12px; min-height: 44px; padding: 8px 12px; border: 1px solid #9baec8; border-radius: 10px; background: transparent; color: white; font-size: 0.85rem; cursor: pointer; }
+      .reset-favorites:focus-visible { outline-color: var(--primary); }
+      .favorites-status { font-size: 0.9rem; margin: 0 0 12px; }
+      .favorites-status:empty { margin: 0; }
+      .card { border: 1px solid #e5e7eb; }
+      .card.is-featured { border: 2px solid var(--primary); background: #fffdfb; }
+      .card-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; }
+      .featured-label { color: var(--secondary); font-size: 0.75rem; font-weight: 700; background: #ffeadb; padding: 4px 8px; border-radius: 20px; }
+      .favorite-button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; margin-left: auto; min-height: 44px; padding: 8px 12px; border: 1px solid #ccd4df; border-radius: 12px; background: white; color: var(--secondary); font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+      .favorite-button[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: #fff; }
+      .card .favorite-feedback { color: var(--secondary); font-size: 0.85rem; background: #ffeadb; border-radius: 10px; padding: 10px; }
+      .favorite-button:hover { background: #ffeadb; }
+      .card img { height: 160px; }
+      .card h2 { line-height: 1.35; }
+      .card-actions a { min-height: 48px; }
+      [hidden] { display: none !important; }
+      .empty-state { padding: 24px; text-align: center; }
+      @media (min-width: 640px) {
+        body { padding: 24px; }
+        header h1 { font-size: 1.4rem; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .card a { transition: none; }
+      }
+      /* Consulta rápida no celular. */
+      .favorites-intro > p { max-width: 65ch; }
+      .manage-favorites { margin-top: 12px; border-top: 1px solid #415674; padding-top: 8px; }
+      .manage-favorites summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 600; }
+      .manage-favorites summary::before { content: '↕'; margin-right: 8px; color: #ff9e58; }
+      .favorite-order { list-style: none; margin-top: 8px; }
+      .favorite-order li { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #415674; }
+      .order-name { flex: 1; min-width: 0; font-size: 0.85rem; }
+      .order-control { width: 44px; height: 44px; flex-shrink: 0; background: #fff; color: var(--secondary); border: none; border-radius: 10px; cursor: pointer; font-size: 1.1rem; }
+      .order-control:disabled { opacity: 0.35; cursor: default; }
+      .search { margin: 16px 0 12px; }
+      .search-tools { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+      .tool-button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 12px; background: white; color: var(--secondary); border: 1px solid #cbd5e1; border-radius: 12px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+      .tool-button[aria-pressed="true"] { color: white; background: var(--secondary); border-color: var(--secondary); }
+      .results-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; margin-bottom: 12px; }
+      .results-count { color: var(--muted); font-size: 0.85rem; }
+      .clear-search { background: transparent; color: var(--secondary); border: none; text-decoration: underline; min-height: 44px; padding: 8px; font-size: 0.85rem; cursor: pointer; flex-shrink: 0; }
+      .image-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; height: 160px; margin-bottom: 12px; border-radius: 12px; background: linear-gradient(135deg, #fff0e5, #e9eef5); color: #53657e; font-size: 0.8rem; }
+      .image-fallback svg { width: 48px; height: 48px; color: #a5afbd; }
+      .logo-fallback { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border-radius: 12px; background: var(--primary); color: white; font-weight: 800; font-size: 1.3rem; }
+      .back-to-top { position: fixed; bottom: calc(16px + env(safe-area-inset-bottom)); right: 16px; z-index: 10; min-height: 48px; padding: 10px 16px; border: 2px solid white; border-radius: 24px; background: var(--secondary); color: white; box-shadow: 0 4px 16px #05214733; font-weight: 600; cursor: pointer; }
+      footer { padding-bottom: 80px !important; }
+      .replace-dialog { position: fixed; inset: 0; margin: auto; width: min(440px, calc(100% - 24px)); max-height: calc(100svh - 32px); overflow-y: auto; border: none; border-radius: 20px; padding: 24px; color: var(--secondary); background: white; box-shadow: 0 20px 80px #05214755; }
+      .replace-dialog::backdrop { background: #052147aa; }
+      .replace-dialog h2 { font-size: 1.2rem; line-height: 1.3; margin-bottom: 10px; }
+      .replace-dialog p { font-size: 0.9rem; margin-bottom: 16px; }
+      .replacement-options { display: grid; gap: 10px; }
+      .replacement-option { text-align: left; justify-content: flex-start; min-height: 52px; }
+      .dialog-cancel { width: 100%; margin-top: 16px; }
+      .favorite-button[aria-pressed="true"]:hover { background: #ff8b39; color: white; }
+      /* Movimento discreto, com alternativa para quem prefere menos animações. */
+      .logo-fallback { min-width: 56px; min-height: 56px; font-size: 1.6rem; }
+      .card { transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease; }
+      .card.card-enter { animation: card-appear 600ms cubic-bezier(.2,.7,.2,1) both; }
+      @keyframes card-appear {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .card a, button {
+        -webkit-tap-highlight-color: transparent;
+        transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
+      }
+      .card a, .login-card button, .favorite-button, .tool-button, .reset-favorites {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .card a::after, .login-card button::after, .favorite-button::after, .tool-button::after {
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background: linear-gradient(110deg, transparent 25%, #ffffff40 50%, transparent 75%);
+        transform: translateX(-125%); transition: transform 500ms ease;
+      }
+      .card a:focus-visible::after, .login-card button:focus-visible::after,
+      .favorite-button:focus-visible::after, .tool-button:focus-visible::after { transform: translateX(125%); }
+      .card a:active, button:not(:disabled):active { transform: scale(.97); }
+      .favorite-icon { display: inline-block; transition: transform 220ms ease; }
+      .favorite-button[aria-pressed="true"] .favorite-icon { transform: rotate(-10deg) scale(1.12); }
+      @media (hover: hover) and (pointer: fine) {
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px #0521471a; }
+        .card a:hover, button:not(:disabled):hover { box-shadow: 0 5px 12px #05214720; }
+        .card a:hover::after, .login-card button:hover::after,
+        .favorite-button:hover::after, .tool-button:hover::after { transform: translateX(125%); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .card, .card a, button, .favorite-icon { transition: none; }
+        .card.card-enter { animation: none; }
+        .card:hover, .card a:active, button:not(:disabled):active { transform: none; }
+        .card a::after, .login-card button::after, .favorite-button::after, .tool-button::after { display: none; }
       }
     </style>
   </head>
@@ -252,23 +380,49 @@
             <img src="assets/img/logo-laranja.png" alt="Logo da Imobiliária" />
           </div>
           <div>
-            <h1>Catálogo de Construtoras</h1>
+            <h1 id="catalogTitle" tabindex="-1">Catálogo de Construtoras</h1>
             <p>Consulta para corretores</p>
           </div>
         </header>
         <button class="logout" onclick="logout()">Sair</button>
       </div>
 
+      <section class="favorites-intro" aria-labelledby="favoritesTitle">
+        <h2 id="favoritesTitle">Suas construtoras em destaque</h2>
+        <p>Escolha até <strong>3 favoritas</strong> para aparecerem primeiro. Ao escolher outra, você decide qual destaque substituir.</p>
+        <p>Suas escolhas ficam salvas para seu usuário neste navegador.</p>
+        <details class="manage-favorites">
+          <summary>Organizar meus destaques</summary>
+          <ol id="favoriteOrder" class="favorite-order" aria-label="Ordem dos destaques"></ol>
+        </details>
+        <button type="button" class="reset-favorites" id="resetFavorites">Restaurar destaques padrão</button>
+      </section>
+      <p id="favoritesStatus" class="favorites-status" role="status" aria-live="polite"></p>
       <div class="search">
         <input
           type="text"
           id="searchInput"
+          aria-label="Buscar construtora"
           placeholder="Buscar construtora..."
         />
       </div>
 
+      <div class="search-tools" role="group" aria-label="Opções do catálogo">
+        <button type="button" class="tool-button" id="onlyFavorites" aria-pressed="false"><span aria-hidden="true">★</span> Somente favoritas</button>
+      </div>
+      <div class="results-bar">
+        <p id="resultsCount" class="results-count" role="status" aria-live="polite"></p>
+        <button type="button" class="clear-search" id="clearSearch" hidden>Limpar filtros</button>
+      </div>
       <section class="grid" id="catalogo">
-        <div class="card">
+        <div class="card is-featured">
+          <div class="card-toolbar">
+            <span class="featured-label">Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="true" aria-label="Remover dos favoritos: Construtora Santo Antonio">
+              <span class="favorite-icon" aria-hidden="true">★</span>
+              <span class="favorite-text">Favoritada</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img
             src="assets/img/guarita-mariooliveira.jpg"
@@ -276,14 +430,23 @@
           />
           <h2>Construtora Santo Antonio</h2>
           <p>Empreendimentos residenciais</p>
-          <a
+          <div class="card-actions">
+            <a
             href="https://drive.google.com/drive/folders/1IDkuGjVNoe6k-sjT4Hr7AM4AFzt61o41"
             target="_blank"
             >Acessar drive</a
           >
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card is-featured">
+          <div class="card-toolbar">
+            <span class="featured-label">Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="true" aria-label="Remover dos favoritos: Habita Engenharia">
+              <span class="favorite-icon" aria-hidden="true">★</span>
+              <span class="favorite-text">Favoritada</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img
             src="assets/img/entrada-portosetubal.jpeg"
@@ -291,37 +454,44 @@
           />
           <h2>Habita Engenharia</h2>
           <p>Empreendimentos residenciais</p>
-          <a
+          <div class="card-actions">
+            <a
             href="https://drive.google.com/drive/folders/1zyEw5pszMucYEBh4OCOaU2JyCSO7g8h8"
             target="_blank"
             >Acessar drive</a
           >
+          </div>
         </div>
 
-        <div class="card">
-        <!-- IMAGEM DA CONSTRUTORA -->
-        <img src="assets/img/entrada-pedestre.jpg" alt="Imagem da Construtora" />
-          <h2>Fucale Construtora</h2>
-          <p>Empreendimentos residenciais</p>
-          <a href="https://drive.google.com/drive/folders/1JrNvIzs2Zh6kJ8jAkeVbIzHj2fJgJlXY" target="_blank">Elevare</a>
-        </div>
-
-        <div class="card">
+        <div class="card is-featured">
+          <div class="card-toolbar">
+            <span class="featured-label">Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="true" aria-label="Remover dos favoritos: BFC Construtora">
+              <span class="favorite-icon" aria-hidden="true">★</span>
+              <span class="favorite-text">Favoritada</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img
-            src="assets/img/entrada-startreciferesidence.jpg"
-            alt="Imagem da Construtora"
-          />
-          <h2>Construtora Baptista Leal</h2>
+          <img src="assets/img/entrada-timesquareresidence.jpg" alt="Imagem da Construtora" />
+          <h2>BFC Construtora</h2>
           <p>Empreendimentos residenciais</p>
-          <a
-            href="https://workdrive.zohoexternal.com/external/5c63b12ed9707132f840e5d6665a9ea183a08f915ebfb2b9634f9a5fb163677e?layout=list"
-            target="_blank"
-            >Acessar drive</a
-          >
+          <div class="card-actions">
+            <a
+              href="https://drive.google.com/drive/folders/1s7n0hvuNp2AJkBVDSZwQtCl3D_Yh7F3Y"
+              target="_blank"
+              >Acessar drive</a
+            >
+          </div>
         </div>
 
         <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Bittencourt Incorporação">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img
             src="assets/img/entrada-puertocervantes.jpg"
@@ -329,50 +499,236 @@
           />
           <h2>Bittencourt Incorporação</h2>
           <p>Empreendimentos residenciais</p>
-          <a
+          <div class="card-actions">
+            <a
             href="https://drive.google.com/drive/folders/1MTGsjI8BKM7BO694hOVMHpvf22lJMoLo"
             target="_blank"
             >Acessar drive</a
           >
+          </div>
         </div>
 
         <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Casa Orange">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img src="assets/img/piscina-casamayor.jpg" alt="Imagem da Construtora" />
           <h2>Casa Orange</h2>
           <p>Empreendimentos residenciais</p>
-          <a
+          <div class="card-actions">
+            <a
             href="https://drive.google.com/drive/folders/1opPm5o3S586YA_wNw1wfMiaoafeQHzBB"
             target="_blank"
             >Acessar drive</a
           >
+          </div>
         </div>
 
         <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Conlar Empreendimentos">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="assets/img/entrada-spazioclassic.jpg" alt="Imagem da Construtora" />
+          <h2>Conlar Empreendimentos</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/drive/folders/1gOhjWKWy-51lR5SMmTP_PuNmemc7e6yj"
+            target="_blank"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Construtora Baptista Leal">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img
+            src="assets/img/entrada-startreciferesidence.jpg"
+            alt="Imagem da Construtora"
+          />
+          <h2>Construtora Baptista Leal</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://workdrive.zohoexternal.com/external/5c63b12ed9707132f840e5d6665a9ea183a08f915ebfb2b9634f9a5fb163677e?layout=list"
+            target="_blank"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Construtora Carrilho">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img src="assets/img/praca-patio-solare.png" alt="Imagem da Construtora" />
           <h2>Construtora Carrilho</h2>
           <p>Empreendimentos residenciais</p>
-          <a
+          <div class="card-actions">
+            <a
             href="https://drive.google.com/drive/folders/12gEEsYb0S43zoFVnOg_9cl9LHLhp-pLx"
             target="_blank"
             >Acessar drive</a
           >
+          </div>
         </div>
 
         <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Construtora Casa Concreto">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="/assets/img/piscina-valeguararapes.png" alt="Imagem da Construtora" />
+          <h2>Construtora Casa Concreto</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/drive/folders/1Cxqid9J5YWwGLWUM6qy8kEHktSQPKe4I"
+            target="_blank"
+            >Vale dos Guararapes</a
+          >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Construtora Ceta">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img src="assets/img/piscina-parcbenvida.png" alt="Imagem da Construtora" />
           <h2>Construtora Ceta</h2>
           <p>Empreendimentos residenciais</p>
-          <a
+          <div class="card-actions">
+            <a
             href="https://drive.google.com/drive/folders/1-7Xz8de20hjimQnqSxDWQjMW5U8gr8am"
             target="_blank"
             >Acessar drive</a
           >
+          </div>
         </div>
 
         <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Construtora Fama">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="assets/img/entrada-avnuehall.webp" alt="Imagem da Construtora" />
+          <h2>Construtora Fama</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+              href="https://docs.google.com/document/d/1IHHrJdCGs6_9dlvYJh_ebEC3MEiYMJheNLeXmJ4FLKE/edit?tab=t.0"
+              target="_blank"
+              >Materiais e tabelas</a
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Construtora Freitas">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="/assets/img/piscina-carneirosresidenceresort.webp" alt="Imagem da Construtora" />
+          <h2>Construtora Freitas</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/drive/folders/1tw3ItJ1ip1QneLVoYLMIGS0SY1CeCrx6"
+            target="_blank"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Construtora Malus">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="/assets/img/entrada-paradorgaudi.jpg" alt="Imagem da Construtora" />
+          <h2>Construtora Malus</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/drive/folders/1nHwQW--gUpH-Wgw0DFkCLsvCQL3oRD2I"
+            target="_blank"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Construtora Tenda">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="assets/img/entrada-moradabeberibe.jpg" alt="Imagem da Construtora" />
+          <h2>Construtora Tenda</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/drive/folders/1Z-etGuyDmoCB9gqHtqvM6U5c9k91xbbE"
+            target="_blank"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Construtora União">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img src="assets/img/piscina-unicilvomeirelles.jpg" alt="Imagem da Construtora" />
           <h2>Construtora União</h2>
@@ -392,150 +748,119 @@
         </div>
 
         <div class="card">
-          <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-spazioclassic.jpg" alt="Imagem da Construtora" />
-          <h2>Conlar Empreendimentos</h2>
-          <p>Empreendimentos residenciais</p>
-          <a
-            href="https://drive.google.com/drive/folders/1gOhjWKWy-51lR5SMmTP_PuNmemc7e6yj"
-            target="_blank"
-            >Acessar drive</a
-          >
-        </div>
-
-        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Exata Engenharia">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img src="assets/img/piscina-terrazzabeiramar.jpg" alt="Imagem da Construtora" />
           <h2>Exata Engenharia</h2>
           <p>Empreendimentos residenciais</p>
-          <a
+          <div class="card-actions">
+            <a
             href="https://drive.google.com/drive/folders/1UBP0tg1yNBSfLfvkBc8h8rDhxSNt0QXH"
             target="_blank"
             >Acessar drive</a
           >
+          </div>
         </div>
 
         <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Fucale Construtora">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-splendore.jpg" alt="Imagem da Construtora" />
-          <h2>Incorporadora Ferreira Pinto</h2>
+        <img src="assets/img/entrada-pedestre.jpg" alt="Imagem da Construtora" />
+          <h2>Fucale Construtora</h2>
           <p>Empreendimentos residenciais</p>
-          <a
-            href="https://drive.google.com/file/d/1p69L7Tro8j9LYpLuWUglXX9rbC9w7KFQ/view"
-            target="_blank"
-            >Acessar drive</a
-          >
+          <div class="card-actions">
+            <a href="https://drive.google.com/drive/folders/1JrNvIzs2Zh6kJ8jAkeVbIzHj2fJgJlXY" target="_blank">Elevare</a>
+          </div>
         </div>
 
         <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Gabriel Bacelar">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img src="assets/img/entrada-jardinsnelmadias.jpg" alt="Imagem da Construtora" />
           <h2>Gabriel Bacelar</h2>
           <p>Empreendimentos residenciais</p>
-          <a
+          <div class="card-actions">
+            <a
             href="https://www.dropbox.com/scl/fo/wuq2450pdyn1tn2il6udx/AFgJQqg52zTZx4bCe1Rbz-Q?rlkey=appy51xl1rxtex8cckm5pzdd5&st=mf2corg9&e=1&dl=0"
             target="_blank"
-            >Acessar drive</a
+            >Incorporação</a
           >
+          <a
+            href="https://www.dropbox.com/scl/fo/vte9ln6ap9k9tozjgcm7i/AEZJs4CDHNOYOtz-EjBqa8E?rlkey=s3xaejejx1bjlu05i26h630k2&st=lzcntg0y&e=1&dl=0"
+            target="_blank"
+            >Condomínio fechado</a
+          >
+          </div>
         </div>
 
         <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Incorporadora Ferreira Pinto">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="assets/img/entrada-splendore.jpg" alt="Imagem da Construtora" />
+          <h2>Incorporadora Ferreira Pinto</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/file/d/1-dB4hyXUpRxjN4pjWjKFAWZoGRhNunNy/view"
+            target="_blank"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Moura Dubeux">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img src="assets/img/entrada-beachclassnovocais.webp" alt="Imagem da Construtora" />
           <h2>Moura Dubeux</h2>
           <p>Empreendimentos residenciais</p>
-          <a
+          <div class="card-actions">
+            <a
             href="https://drive.google.com/drive/folders/1gC2WULRs1WBp0Aw-W1LcWlwa98JSvyZP"
             target="_blank"
             >Acessar drive</a
           >
+          </div>
         </div>
 
         <div class="card">
-          <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/sala-isamelo.jpg" alt="Imagem da Construtora" />
-          <h2>Renel Empreendimentos</h2>
-          <p>Empreendimentos residenciais</p>
-          <a
-            href="https://drive.google.com/drive/folders/1vpHOrp6jkMQvbHbiGq44Nz8N2h9bve3H"
-            target="_blank"
-            >Acessar drive</a
-          >
-        </div>
-
-        <div class="card">
-          <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-jardinsangelavieira.png" alt="Imagem da Construtora" />
-          <h2>Rio Ave</h2>
-          <p>Empreendimentos residenciais</p>
-          <a
-            href="https://drive.google.com/drive/folders/14boQchLHJ1DrwDYOAVYJq92moN1-f_Cy"
-            target="_blank"
-            >Acessar drive</a
-          >
-        </div>
-
-        <div class="card">
-          <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-plazamayor.jpg" alt="Imagem da Construtora" />
-          <h2>Tecla Construtora</h2>
-          <p>Empreendimentos residenciais</p>
-          <a
-            href="https://drive.google.com/drive/folders/1VWMaTy-XV9kn-OWzoUqLZaPxpKCj4bmf"
-            target="_blank"
-            >Acessar drive</a
-          >
-        </div>
-
-        <div class="card">
-          <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/rooftop-praia-de-gameleira.jpg" alt="Imagem da Construtora" />
-          <h2>Tenório Incorporações</h2>
-          <p>Empreendimentos residenciais</p>
-          <a
-            href="https://drive.google.com/drive/folders/1zrg9XyvkzobVMNwhfhCq-PIJ9Qek-1Oa"
-            target="_blank"
-            >Acessar drive</a
-          >
-        </div>
-
-        <div class="card">
-          <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-moradabeberibe.jpg" alt="Imagem da Construtora" />
-          <h2>Construtora Tenda</h2>
-          <p>Empreendimentos residenciais</p>
-          <a
-            href="https://drive.google.com/drive/folders/1Z-etGuyDmoCB9gqHtqvM6U5c9k91xbbE"
-            target="_blank"
-            >Acessar drive</a
-          >
-        </div>
-
-        <div class="card">
-          <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-luardoparque.jpg" alt="Imagem da Construtora" />
-          <h2>Torque Construções</h2>
-          <p>Empreendimentos residenciais</p>
-          <a
-            href="https://drive.google.com/drive/folders/1UoJn1VzUIhZKRZWc2oq66JhSoSNzqzWBhttps://drive.google.com/drive/folders/1UoJn1VzUIhZKRZWc2oq66JhSoSNzqzWB"
-            target="_blank"
-            >Acessar drive</a
-          >
-        </div>
-
-        <div class="card">
-          <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-amazonas.jpg" alt="Imagem da Construtora" />
-          <h2>Vale do Ave</h2>
-          <p>Empreendimentos residenciais</p>
-          <a
-            href="https://drive.google.com/drive/folders/1ZSCzqXU8cYYJk1bH8AyiQnCZUB12SzXa"
-            target="_blank"
-            >Acessar drive</a
-          >
-        </div>
-
-        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Pernambuco Construtora">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
           <img src="assets/img/varanda-candeiasprince.webp" alt="Imagem da Construtora" />
           <h2>Pernambuco Construtora</h2>
@@ -555,42 +880,138 @@
         </div>
 
         <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Renel Empreendimentos">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-timesquareresidence.jpg" alt="Imagem da Construtora" />
-          <h2>BFC Construtora</h2>
+          <img src="assets/img/sala-isamelo.jpg" alt="Imagem da Construtora" />
+          <h2>Renel Empreendimentos</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
             <a
-              href="https://www.dropbox.com/scl/fo/pcgo3rd794t0xycan78o8/AP58TNTXgNKIwEsdN4I7X3A/Times%20Square%20Residence?rlkey=h2wq7g33id0bcs8z8103tqy9d&e=1&subfolder_nav_tracking=1&dl=0"
-              target="_blank"
-              >Time Square Residence</a
-            >
-            <a
-              href="https://www.dropbox.com/scl/fo/pcgo3rd794t0xycan78o8/ADTtXRREk4iStDcyO1xxHtY/Quebec?rlkey=h2wq7g33id0bcs8z8103tqy9d&e=1&subfolder_nav_tracking=1&dl=0"
-              target="_blank"
-              >Quebec</a
-            >
-            <a
-              href="https://www.dropbox.com/scl/fo/pcgo3rd794t0xycan78o8/ADTtXRREk4iStDcyO1xxHtY/Quebec?rlkey=h2wq7g33id0bcs8z8103tqy9d&e=1&subfolder_nav_tracking=1&dl=0"
-              target="_blank"
-              >Vancouver</a
-            >
+            href="https://drive.google.com/drive/folders/1vpHOrp6jkMQvbHbiGq44Nz8N2h9bve3H"
+            target="_blank"
+            >Acessar drive</a
+          >
           </div>
         </div>
 
-         <div class="card">
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Rio Ave">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-avnuehall.webp" alt="Imagem da Construtora" />
-          <h2>Construtora Fama</h2>
+          <img src="assets/img/entrada-jardinsangelavieira.png" alt="Imagem da Construtora" />
+          <h2>Rio Ave</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
             <a
-              href="https://docs.google.com/document/d/1IHHrJdCGs6_9dlvYJh_ebEC3MEiYMJheNLeXmJ4FLKE/edit?tab=t.0"
-              target="_blank"
-              >Materiais e tabelas</a
-            >
+            href="https://drive.google.com/drive/folders/14boQchLHJ1DrwDYOAVYJq92moN1-f_Cy"
+            target="_blank"
+            >Materiais</a
+          >
+          <a
+            href="https://drive.google.com/drive/folders/1sPMt7zBGf5Z94n3L7SYyo6PhSLYCKp1V"
+            target="_blank"
+            >Tabelas</a
+          >
           </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Tecla Construtora">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="assets/img/entrada-plazamayor.jpg" alt="Imagem da Construtora" />
+          <h2>Tecla Construtora</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/drive/folders/1VWMaTy-XV9kn-OWzoUqLZaPxpKCj4bmf"
+            target="_blank"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Tenório Incorporações">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="assets/img/rooftop-praia-de-gameleira.jpg" alt="Imagem da Construtora" />
+          <h2>Tenório Incorporações</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/drive/folders/1zrg9XyvkzobVMNwhfhCq-PIJ9Qek-1Oa"
+            target="_blank"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Torque Construções">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="assets/img/entrada-luardoparque.jpg" alt="Imagem da Construtora" />
+          <h2>Torque Construções</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/drive/folders/1UoJn1VzUIhZKRZWc2oq66JhSoSNzqzWB"
+            target="_blank"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Vale do Ave">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img src="assets/img/entrada-amazonas.jpg" alt="Imagem da Construtora" />
+          <h2>Vale do Ave</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/drive/folders/1ZSCzqXU8cYYJk1bH8AyiQnCZUB12SzXa"
+            target="_blank"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
       </section>
+
+      <p class="empty-state" id="emptyState" hidden>Nenhuma construtora encontrada. Tente outro nome.</p>
 
       <footer
         style="
@@ -605,6 +1026,13 @@
       </footer>
     </div>
 
+    <button type="button" id="backToTop" class="back-to-top" hidden>↑ Voltar ao topo</button>
+    <dialog id="replacementDialog" class="replace-dialog" aria-labelledby="replacementTitle" aria-describedby="replacementDescription">
+      <h2 id="replacementTitle">Qual destaque deseja substituir?</h2>
+      <p id="replacementDescription">Escolha quem dará lugar a <strong id="replacementName"></strong>.</p>
+      <div id="replacementOptions" class="replacement-options"></div>
+      <button type="button" class="tool-button dialog-cancel" id="cancelReplacement">Cancelar</button>
+    </dialog>
     <script>
       /*************************************************
        * CONFIGURAÇÃO DE USUÁRIOS (LOGINS)
@@ -612,23 +1040,7 @@
        *************************************************/
       const USERS = [
         { user: "Wilion", pass: "@Wg859073401" },
-        { user: "Graciane", pass: "12345" },
         { user: "Rosana", pass: "12345" },
-        { user: "Rochelly", pass: "12345" },
-        { user: "Wilka", pass: "12345" },
-        { user: "Luiz", pass: "12345" },
-        { user: "Claudemir", pass: "12345" },
-        { user: "Glauber", pass: "12345" },
-        { user: "Jaime", pass: "12345" },
-        { user: "Barboza", pass: "12345" },
-        { user: "Mateus", pass: "12345" },
-        { user: "Normando", pass: "12345" },
-        { user: "Renier", pass: "12345" },
-        { user: "Roberta", pass: "12345" },
-        { user: "Robson", pass: "12345" },
-        { user: "Rosemere", pass: "12345" },
-        { user: "Tatheanne", pass: "12345" },
-        { user: "Patricia", pass: "12345" },
       ];
 
       /*************************************************
@@ -667,30 +1079,265 @@
       function showApp() {
         document.getElementById("login").style.display = "none";
         document.getElementById("app").style.display = "block";
+        loadFavorites();
+        renderCatalog();
       }
 
-      /*************************************************
-       * VERIFICA SE JÁ ESTÁ LOGADO
-       *************************************************/
-      if (localStorage.getItem("auth") === "true") {
-        showApp();
-      }
-
-      /*************************************************
-       * BUSCA DE CONSTRUTORAS
-       *************************************************/
+      const DEFAULT_FAVORITES = [
+        "Construtora Santo Antonio", "Habita Engenharia", "BFC Construtora"
+      ];
+      const catalog = document.getElementById("catalogo");
+      const cards = Array.from(catalog.querySelectorAll(".card"));
       const searchInput = document.getElementById("searchInput");
-      if (searchInput) {
-        searchInput.addEventListener("input", () => {
-          const value = searchInput.value.toLowerCase();
+      const status = document.getElementById("favoritesStatus");
+      const nameOf = (card) => card.querySelector("h2").textContent.trim();
+      const knownNames = new Set(cards.map(nameOf));
+      const normalize = (text) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
+      // Cache only the original searchable content, excluding favorite controls.
+      const searchableText = new Map(cards.map(card => [card,
+        normalize(Array.from(card.querySelectorAll("h2, p, .card-actions a"))
+          .map(element => element.textContent).join(" "))
+      ]));
+      let favorites = [...DEFAULT_FAVORITES];
+      const favoriteKey = () => "catalogo:favoritos:v1:" + (localStorage.getItem("usuario") || "");
 
-          document.querySelectorAll(".card").forEach((card) => {
-            card.style.display = card.innerText.toLowerCase().includes(value)
-              ? "block"
-              : "none";
+      function loadFavorites() {
+        favorites = [...DEFAULT_FAVORITES];
+        status.textContent = "";
+        try {
+          const saved = localStorage.getItem(favoriteKey());
+          if (saved !== null) {
+            const parsed = JSON.parse(saved);
+            if (!Array.isArray(parsed) || !parsed.every(name => typeof name === "string")) {
+              throw new Error("Formato de favoritos inválido");
+            }
+            favorites = [...new Set(parsed)].filter(name => knownNames.has(name)).slice(0, 3);
+          }
+        } catch {
+          status.textContent = "Não foi possível carregar suas escolhas. Exibindo os destaques padrão.";
+        }
+      }
+
+      function saveFavorites(message) {
+        try {
+          localStorage.setItem(favoriteKey(), JSON.stringify(favorites));
+          status.textContent = message;
+        } catch {
+          status.textContent = "Escolhas alteradas nesta sessão. O navegador não permitiu salvá-las para a próxima visita.";
+        }
+      }
+
+      function filterCatalog() {
+        const query = normalize(searchInput.value.trim());
+        let visible = 0;
+        cards.forEach(card => {
+          card.hidden = !searchableText.get(card).includes(query) ||
+            (onlyFavorites.getAttribute("aria-pressed") === "true" && !favorites.includes(nameOf(card)));
+          if (!card.hidden) visible++;
+        });
+        const favoritesOnly = onlyFavorites.getAttribute("aria-pressed") === "true";
+        const total = favoritesOnly ? favorites.length : cards.length;
+        document.getElementById("resultsCount").textContent = visible + " de " + total + (favoritesOnly ? " favoritas" : " construtoras");
+        clearSearch.hidden = !query && !favoritesOnly;
+        const empty = document.getElementById("emptyState");
+        empty.hidden = visible > 0;
+        empty.textContent = favoritesOnly && !favorites.length
+          ? "Você ainda não tem favoritas. Limpe os filtros e toque em Favoritar para escolher."
+          : "Nenhuma construtora encontrada. Tente outro nome ou limpe os filtros.";
+      }
+
+      function renderCatalog() {
+        const sorted = [...cards].sort((a, b) => {
+          const aIndex = favorites.indexOf(nameOf(a));
+          const bIndex = favorites.indexOf(nameOf(b));
+          if (aIndex >= 0 && bIndex >= 0) return aIndex - bIndex;
+          if (aIndex >= 0) return -1;
+          if (bIndex >= 0) return 1;
+          return nameOf(a).localeCompare(nameOf(b), "pt-BR", { sensitivity: "base" });
+        });
+        sorted.forEach(card => {
+          const name = nameOf(card);
+          const selected = favorites.includes(name);
+          const feedback = card.querySelector(".favorite-feedback");
+          if (feedback) feedback.remove();
+          card.classList.toggle("is-featured", selected);
+          card.querySelector(".featured-label").hidden = !selected;
+          const button = card.querySelector(".favorite-button");
+          button.setAttribute("aria-pressed", String(selected));
+          button.setAttribute("aria-label", (selected ? "Remover dos favoritos: " : "Favoritar: ") + name);
+          button.querySelector(".favorite-icon").textContent = selected ? "★" : "☆";
+          button.querySelector(".favorite-text").textContent = selected ? "Favoritada" : "Favoritar";
+          catalog.appendChild(card);
+        });
+        filterCatalog();
+        renderFavoriteOrder();
+      }
+
+      cards.forEach(card => {
+        const button = card.querySelector(".favorite-button");
+        button.addEventListener("click", () => {
+          const name = nameOf(card);
+          if (favorites.includes(name)) {
+            favorites = favorites.filter(item => item !== name);
+            saveFavorites(name + " removida dos destaques.");
+          } else {
+            if (favorites.length >= 3) {
+              chooseReplacement(name, button);
+              return;
+            }
+            favorites.push(name);
+            saveFavorites(name + " adicionada aos destaques.");
+          }
+          renderCatalog();
+          button.focus({ preventScroll: true });
+        });
+      });
+
+      document.getElementById("resetFavorites").addEventListener("click", () => {
+        favorites = [...DEFAULT_FAVORITES];
+        saveFavorites("Destaques padrão restaurados.");
+        renderCatalog();
+      });
+      searchInput.addEventListener("input", filterCatalog);
+      document.getElementById("pass").addEventListener("keydown", event => {
+        if (event.key === "Enter") login();
+      });
+      const onlyFavorites = document.getElementById("onlyFavorites");
+      const clearSearch = document.getElementById("clearSearch");
+      const favoriteOrder = document.getElementById("favoriteOrder");
+      const replacementDialog = document.getElementById("replacementDialog");
+      let pendingReplacement = null;
+      let replacementTrigger = null;
+      onlyFavorites.addEventListener("click", () => {
+        onlyFavorites.setAttribute("aria-pressed", String(onlyFavorites.getAttribute("aria-pressed") !== "true"));
+        filterCatalog();
+      });
+      clearSearch.addEventListener("click", () => {
+        searchInput.value = "";
+        onlyFavorites.setAttribute("aria-pressed", "false");
+        filterCatalog();
+        searchInput.focus();
+      });
+
+      function renderFavoriteOrder() {
+        favoriteOrder.replaceChildren();
+        if (!favorites.length) {
+          const empty = document.createElement("li");
+          empty.textContent = "Nenhuma favorita ainda. Toque em Favoritar em uma construtora.";
+          favoriteOrder.appendChild(empty);
+        }
+        favorites.forEach((name, index) => {
+          const row = document.createElement("li");
+          const label = document.createElement("span");
+          label.className = "order-name";
+          label.textContent = (index + 1) + ". " + name;
+          row.appendChild(label);
+          [-1, 1].forEach(direction => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "order-control";
+            button.textContent = direction === -1 ? "↑" : "↓";
+            button.setAttribute("aria-label", "Mover " + name + (direction === -1 ? " para cima" : " para baixo"));
+            button.disabled = index + direction < 0 || index + direction >= favorites.length;
+            button.addEventListener("click", () => {
+              const next = index + direction;
+              [favorites[index], favorites[next]] = [favorites[next], favorites[index]];
+              saveFavorites("Ordem dos destaques atualizada.");
+              renderCatalog();
+              const newRow = favoriteOrder.children[next];
+              const controls = Array.from(newRow.querySelectorAll("button"));
+              (controls.find(control => !control.disabled) || newRow).focus({ preventScroll: true });
+            });
+            row.appendChild(button);
           });
+          favoriteOrder.appendChild(row);
         });
       }
+
+      function chooseReplacement(name, trigger) {
+        pendingReplacement = name;
+        replacementTrigger = trigger;
+        document.getElementById("replacementName").textContent = name;
+        const options = document.getElementById("replacementOptions");
+        options.replaceChildren();
+        favorites.forEach((current, index) => {
+          const option = document.createElement("button");
+          option.type = "button";
+          option.className = "tool-button replacement-option";
+          option.textContent = (index + 1) + ". " + current;
+          option.setAttribute("aria-label", "Substituir " + current);
+          option.addEventListener("click", () => {
+            if (!pendingReplacement) return;
+            favorites[index] = pendingReplacement;
+            saveFavorites(current + " substituída por " + pendingReplacement + ".");
+            renderCatalog();
+            replacementDialog.close();
+          });
+          options.appendChild(option);
+        });
+        replacementDialog.showModal();
+      }
+      document.getElementById("cancelReplacement").addEventListener("click", () => replacementDialog.close());
+      replacementDialog.addEventListener("close", () => {
+        pendingReplacement = null;
+        if (replacementTrigger && !replacementTrigger.closest(".card").hidden) {
+          replacementTrigger.focus({ preventScroll: true });
+        } else searchInput.focus({ preventScroll: true });
+        replacementTrigger = null;
+      });
+
+      const backToTop = document.getElementById("backToTop");
+      function updateBackToTop() {
+        backToTop.hidden = window.scrollY < 500 || document.getElementById("app").style.display === "none";
+      }
+      window.addEventListener("scroll", updateBackToTop, { passive: true });
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+        document.getElementById("catalogTitle").focus({ preventScroll: true });
+      });
+
+      // Preserve original image URLs. Show a local placeholder if loading fails.
+      document.querySelectorAll("img").forEach(img => {
+        const showFallback = () => {
+          if (img.dataset.fallbackShown) return;
+          img.dataset.fallbackShown = "true";
+          img.hidden = true;
+          const placeholder = document.createElement("div");
+          if (img.closest(".card")) {
+            placeholder.className = "image-fallback";
+            placeholder.setAttribute("role", "img");
+            placeholder.setAttribute("aria-label", "Imagem indisponível: " + nameOf(img.closest(".card")));
+            placeholder.innerHTML = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 40V14h18v26M26 22h14v18M4 40h40M13 20h3m5 0h-3m-5 7h3m5 0h-3m-5 7h3m5 0h-3m13-5h4m-4 6h4"/></svg><span>Imagem indisponível</span>';
+          } else {
+            placeholder.className = "logo-fallback";
+            placeholder.textContent = "C";
+            placeholder.setAttribute("aria-label", "Catálogo de construtoras");
+          }
+          img.after(placeholder);
+        };
+        img.addEventListener("error", showFallback);
+        if (img.complete && img.naturalWidth === 0) showFallback();
+      });
+
+      // Anima cada card uma vez ao entrar na tela, sem esconder conteúdo se JS falhar.
+      const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if ("IntersectionObserver" in window) {
+        const cardObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            if (!motionPreference.matches) entry.target.classList.add("card-enter");
+            cardObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.08 });
+        cards.forEach(card => {
+          card.addEventListener("animationend", event => {
+            if (event.animationName === "card-appear") card.classList.remove("card-enter");
+          });
+          cardObserver.observe(card);
+        });
+      }
+
+      if (localStorage.getItem("auth") === "true") showApp();
     </script>
   </body>
 </html>
