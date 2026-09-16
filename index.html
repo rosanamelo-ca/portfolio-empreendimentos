@@ -10,354 +10,133 @@
       :root {
         --primary: #ff710d;
         --secondary: #052147;
-        --bg: #fff8f2;
-        --card: #ffffff;
+        --bg: #f8f9fb;
+        --card: #fff;
         --text: #052147;
-        --muted: #6b7280;
+        --muted: #566478;
+        --border: #dce2e9;
         --radius: 16px;
       }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Inter, sans-serif;
-      }
-
-      body {
-        background: var(--bg);
-        color: var(--text);
-        padding: 16px;
-      }
-
-      .login-container {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .login-card {
-        background: var(--card);
-        padding: 24px;
-        border-radius: var(--radius);
-        width: 100%;
-        max-width: 360px;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-        text-align: center;
-      }
-
-      .login-logo {
-        max-width: 190px;
-        margin: 0 auto 16px;
-      }
-
-      .login-logo img {
-        width: 100%;
-        height: auto;
-      }
-
-      .login-card h1 {
-        font-size: 1.3rem;
-        margin-bottom: 8px;
-        text-align: center;
-      }
-
-      .login-card p {
-        font-size: 0.85rem;
-        color: var(--muted);
-        text-align: center;
-        margin-bottom: 20px;
-      }
-
-      .login-card input {
-        width: 100%;
-        padding: 12px 14px;
-        margin-bottom: 12px;
-        border-radius: var(--radius);
-        border: 1px solid #e5e7eb;
-        font-size: 0.95rem;
-      }
-
-      .login-card button {
-        width: 100%;
-        padding: 12px;
-        border-radius: var(--radius);
-        border: none;
-        background: var(--primary);
-        color: #fff;
-        font-size: 0.95rem;
-        font-weight: 600;
-        cursor: pointer;
-      }
-
-      .error {
-        color: #dc2626;
-        font-size: 0.8rem;
-        margin-top: 8px;
-        text-align: center;
-        display: none;
-      }
-
-      header {
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-align: left;
-      }
-
-      .header-logo img {
-        height: 42px;
-        width: auto;
-        display: block;
-      }
-
-      header h1 {
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin-bottom: 6px;
-      }
-
-      header p {
-        font-size: 0.9rem;
-        color: var(--muted);
-      }
-
-      .top-actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 16px;
-      }
-
-      .logout {
-        background: none;
-        border: none;
-        color: var(--secondary);
-        font-size: 0.85rem;
-        cursor: pointer;
-        font-weight: 600;
-      }
-
-      .search {
-        margin: 16px 0 24px;
-      }
-
-      .search input {
-        width: 100%;
-        padding: 12px 14px;
-        border-radius: var(--radius);
-        border: 1px solid #e5e7eb;
-        font-size: 0.95rem;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .card {
-        min-width: 0;
-        background: var(--card);
-        border-radius: var(--radius);
-        padding: 16px;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
-        display: flex;
-        flex-direction: column;
-      }
-
-      .card img {
-        width: 100%;
-        height: 140px;
-        object-fit: cover;
-        border-radius: 12px;
-        margin-bottom: 12px;
-      }
-
-      .card h2 {
-        font-size: 1.05rem;
-        margin-bottom: 6px;
-      }
-
-      .card p {
-        font-size: 0.85rem;
-        color: var(--muted);
-        margin-bottom: 12px;
-      }
-
-      .card a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        max-width: 100%;
-        padding: 10px 14px;
-        border-radius: 12px;
-        text-decoration: none;
-        color: #fff;
-        background: var(--primary);
-        font-size: 0.85rem;
-        font-weight: 600;
-        line-height: 1.4;
-        text-align: center;
-        overflow-wrap: anywhere;
-        transition: background-color 0.15s ease;
-      }
-
-      .card a:hover,
-      .login-card button:hover {
-        background: #ff8b39;
-        color: #fff;
-      }
-
-      .card a:focus-visible,
-      button:focus-visible {
-        outline: 3px solid var(--primary);
-        outline-offset: 3px;
-      }
-
-      .card-actions {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: stretch;
-        gap: 8px;
-        margin-top: auto;
-      }
-
-      .card-actions a {
-        flex: 0 1 auto;
-        min-width: 0;
-      }
-
-      @media (min-width: 640px) {
-        .grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      /* Controles confortáveis para toque e layout pensado primeiro no celular. */
-      body { padding: 12px; line-height: 1.5; }
-      #app { max-width: 1200px; margin: 0 auto; }
-      .login-container { min-height: calc(100svh - 24px); }
-      .login-card { border-top: 5px solid var(--primary); }
-      .login-card input, .search input { font-size: 16px; min-height: 48px; }
-      input:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
-      .login-card button { min-height: 48px; }
-      .top-actions { gap: 12px; align-items: flex-start; }
-      header { gap: 10px; margin-bottom: 0; min-width: 0; }
-      header h1 { font-size: 1.15rem; line-height: 1.25; }
-      .header-logo { flex-shrink: 0; }
-      .header-logo img { width: auto; max-width: 96px; height: auto; max-height: 56px; }
-      .logout { min-width: 48px; min-height: 48px; flex-shrink: 0; }
-      .favorites-intro { background: var(--secondary); color: white; border-radius: 16px; padding: 18px; margin-bottom: 16px; }
-      .favorites-intro h2 { font-size: 1.2rem; margin-bottom: 6px; }
-      .favorites-intro p { font-size: 0.9rem; }
-      .favorites-intro strong { color: #ff9e58; }
-      .reset-favorites { margin-top: 12px; min-height: 44px; padding: 8px 12px; border: 1px solid #9baec8; border-radius: 10px; background: transparent; color: white; font-size: 0.85rem; cursor: pointer; }
-      .reset-favorites:focus-visible { outline-color: var(--primary); }
-      .favorites-status { font-size: 0.9rem; margin: 0 0 12px; }
-      .favorites-status:empty { margin: 0; }
-      .card { border: 1px solid #e5e7eb; }
-      .card.is-featured { border: 2px solid var(--primary); background: #fffdfb; }
-      .card-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; }
-      .featured-label { color: var(--secondary); font-size: 0.75rem; font-weight: 700; background: #ffeadb; padding: 4px 8px; border-radius: 20px; }
-      .favorite-button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; margin-left: auto; min-height: 44px; padding: 8px 12px; border: 1px solid #ccd4df; border-radius: 12px; background: white; color: var(--secondary); font-size: 0.85rem; font-weight: 600; cursor: pointer; }
-      .favorite-button[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: #fff; }
-      .card .favorite-feedback { color: var(--secondary); font-size: 0.85rem; background: #ffeadb; border-radius: 10px; padding: 10px; }
-      .favorite-button:hover { background: #ffeadb; }
-      .card img { height: 160px; }
-      .card h2 { line-height: 1.35; }
-      .card-actions a { min-height: 48px; }
+      * { box-sizing: border-box; }
+      body, h1, h2, p, ol { margin: 0; }
+      body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.5; padding: 16px; }
+      button, input, summary, a { -webkit-tap-highlight-color: transparent; }
+      button, input { font: inherit; }
+      button, summary { cursor: pointer; }
+      button { color: var(--text); }
+      button:disabled { cursor: default; opacity: .4; }
+      button, a { touch-action: manipulation; }
+      button, .card a { transition: background-color 150ms ease, border-color 150ms ease; }
+      button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid #1769aa; outline-offset: 3px; }
       [hidden] { display: none !important; }
-      .empty-state { padding: 24px; text-align: center; }
-      @media (min-width: 640px) {
-        body { padding: 24px; }
-        header h1 { font-size: 1.4rem; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .card a { transition: none; }
-      }
-      /* Consulta rápida no celular. */
-      .favorites-intro > p { max-width: 65ch; }
-      .manage-favorites { margin-top: 12px; border-top: 1px solid #415674; padding-top: 8px; }
-      .manage-favorites summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 600; }
-      .manage-favorites summary::before { content: '↕'; margin-right: 8px; color: #ff9e58; }
-      .favorite-order { list-style: none; margin-top: 8px; }
-      .favorite-order li { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #415674; }
-      .order-name { flex: 1; min-width: 0; font-size: 0.85rem; }
-      .order-control { width: 44px; height: 44px; flex-shrink: 0; background: #fff; color: var(--secondary); border: none; border-radius: 10px; cursor: pointer; font-size: 1.1rem; }
-      .order-control:disabled { opacity: 0.35; cursor: default; }
-      .search { margin: 16px 0 12px; }
-      .search-tools { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
-      .tool-button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 12px; background: white; color: var(--secondary); border: 1px solid #cbd5e1; border-radius: 12px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
-      .tool-button[aria-pressed="true"] { color: white; background: var(--secondary); border-color: var(--secondary); }
-      .results-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; margin-bottom: 12px; }
-      .results-count { color: var(--muted); font-size: 0.85rem; }
-      .clear-search { background: transparent; color: var(--secondary); border: none; text-decoration: underline; min-height: 44px; padding: 8px; font-size: 0.85rem; cursor: pointer; flex-shrink: 0; }
-      .image-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; height: 160px; margin-bottom: 12px; border-radius: 12px; background: linear-gradient(135deg, #fff0e5, #e9eef5); color: #53657e; font-size: 0.8rem; }
-      .image-fallback svg { width: 48px; height: 48px; color: #a5afbd; }
-      .logo-fallback { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border-radius: 12px; background: var(--primary); color: white; font-weight: 800; font-size: 1.3rem; }
-      .back-to-top { position: fixed; bottom: calc(16px + env(safe-area-inset-bottom)); right: 16px; z-index: 10; min-height: 48px; padding: 10px 16px; border: 2px solid white; border-radius: 24px; background: var(--secondary); color: white; box-shadow: 0 4px 16px #05214733; font-weight: 600; cursor: pointer; }
-      footer { padding-bottom: 80px !important; }
-      .replace-dialog { position: fixed; inset: 0; margin: auto; width: min(440px, calc(100% - 24px)); max-height: calc(100svh - 32px); overflow-y: auto; border: none; border-radius: 20px; padding: 24px; color: var(--secondary); background: white; box-shadow: 0 20px 80px #05214755; }
-      .replace-dialog::backdrop { background: #052147aa; }
+      #app { max-width: 1200px; margin: 0 auto; }
+      input[type="text"], input[type="search"], input[type="password"] { width: 100%; min-height: 48px; padding: 11px 14px; border: 1px solid #adb9c8; border-radius: 12px; background: white; color: var(--text); font-size: 16px; }
+      input::placeholder { color: #637086; opacity: 1; }
+      .login-container { min-height: calc(100svh - 32px); display: flex; justify-content: center; align-items: center; }
+      .login-card { width: 100%; max-width: 390px; padding: 28px; border: 1px solid var(--border); border-top: 4px solid var(--primary); border-radius: 20px; background: white; box-shadow: 0 12px 36px #0521470c; text-align: center; }
+      .login-logo { max-width: 180px; margin: 0 auto 20px; }
+      .login-logo img { display: block; width: 100%; height: auto; }
+      .login-card h1 { font-size: 1.5rem; letter-spacing: -.03em; margin-bottom: 4px; }
+      .login-card > p { color: var(--muted); font-size: .95rem; margin-bottom: 24px; }
+      .field-label { display: block; text-align: left; font-size: .875rem; font-weight: 600; margin-bottom: 6px; }
+      .login-card input[type="text"], .login-card input[type="password"] { margin-bottom: 16px; }
+      .remember-option { display: flex; align-items: center; gap: 10px; min-height: 44px; text-align: left; font-size: .875rem; cursor: pointer; }
+      .remember-option input { width: 20px; height: 20px; margin: 0; flex-shrink: 0; accent-color: var(--secondary); }
+      .login-card .login-help { text-align: left; font-size: .8125rem; margin: 8px 0 20px; }
+      .login-card button { width: 100%; min-height: 48px; border: 1px solid var(--primary); border-radius: 12px; background: var(--primary); color: var(--secondary); font-weight: 700; }
+      .error { display: none; color: #a51b1b; font-size: .875rem; margin-top: 14px; }
+      .top-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 4px 0 20px; }
+      header { display: flex; align-items: center; gap: 12px; min-width: 0; }
+      .header-logo { flex-shrink: 0; }
+      .header-logo img { display: block; width: auto; height: auto; max-width: 76px; max-height: 44px; }
+      header h1 { font-size: 1.15rem; line-height: 1.25; letter-spacing: -.025em; }
+      header p { color: var(--muted); font-size: .8125rem; margin-top: 4px; overflow-wrap: anywhere; }
+      .logout { flex-shrink: 0; min-height: 44px; padding: 8px 12px; border: 1px solid var(--border); background: white; border-radius: 10px; font-size: .875rem; font-weight: 600; }
+      .favorites-intro { background: var(--secondary); color: white; border-radius: var(--radius); padding: 14px 16px; margin-bottom: 12px; }
+      .favorites-heading { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+      .favorites-intro h2 { font-size: 1rem; font-weight: 600; }
+      .favorites-count { border-radius: 20px; background: #ffffff1c; padding: 2px 9px; font-size: .8125rem; color: #fff; }
+      .favorites-intro > p { font-size: .8125rem; color: #d6e1ef; margin-top: 4px; }
+      .manage-favorites summary { display: flex; align-items: center; min-height: 44px; font-size: .875rem; color: #ffb780; width: fit-content; }
+      .manage-favorites summary::before { content: '+'; margin-right: 8px; font-weight: 700; }
+      .manage-favorites[open] summary::before { content: '−'; }
+      .manage-favorites p { font-size: .875rem; color: #d6e1ef; max-width: 65ch; }
+      .favorite-order { list-style: none; padding: 0; margin-top: 8px; }
+      .favorite-order li { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #3e5573; }
+      .order-name { flex: 1; min-width: 0; font-size: .875rem; }
+      .order-control { width: 44px; height: 44px; flex-shrink: 0; background: #fff; border: 0; border-radius: 10px; font-size: 1.1rem; }
+      .reset-favorites { margin-top: 12px; min-height: 44px; padding: 8px 12px; border: 1px solid #9baec8; border-radius: 10px; background: transparent; color: white; font-size: .875rem; }
+      .favorites-status { font-size: .875rem; margin: 8px 0; color: var(--secondary); }
+      .favorites-status:empty { margin: 0; }
+      .catalog-controls { position: sticky; top: 0; z-index: 5; padding: 10px 0; background: var(--bg); border-bottom: 1px solid var(--border); }
+      .search { flex: 1; min-width: 0; }
+      .search input { border-color: #bac5d2; padding-left: 14px; }
+      .search-tools { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+      .tool-button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 12px; background: white; border: 1px solid #bac5d2; border-radius: 10px; font-size: .875rem; font-weight: 600; }
+      .tool-button[aria-pressed="true"] { background: var(--secondary); color: white; border-color: var(--secondary); }
+      .view-switch { display: flex; gap: 4px; }
+      .view-switch .tool-button { padding-inline: 10px; }
+      .results-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 52px; padding: 4px 0; }
+      .results-count { color: var(--muted); font-size: .875rem; }
+      .clear-search { background: transparent; border: none; text-decoration: underline; min-height: 44px; padding: 8px; font-size: .875rem; }
+      .grid { display: grid; grid-template-columns: 1fr; align-items: stretch; gap: 16px; }
+      .card { min-width: 0; padding: 14px; border: 1px solid var(--border); border-radius: var(--radius); background: white; display: flex; flex-direction: column; }
+      .card.is-featured { border: 2px solid var(--primary); box-shadow: none; }
+      .card-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 12px; }
+      .featured-label { color: var(--secondary); font-size: .75rem; font-weight: 700; background: #fff0e4; padding: 4px 8px; border-radius: 20px; }
+      .favorite-button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; margin-left: auto; min-height: 44px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; background: white; font-size: .875rem; font-weight: 600; }
+      .favorite-button[aria-pressed="true"] { color: var(--secondary); background: #fff0e4; border-color: #f5b380; }
+      .favorite-icon { font-size: 1.1rem; line-height: 1; }
+      .card img, .image-fallback { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; background: #eef1f5; margin-bottom: 14px; }
+      .card h2 { font-size: 1.0625rem; line-height: 1.35; letter-spacing: -.015em; margin-bottom: 6px; }
+      .card > p { color: var(--muted); font-size: .875rem; margin-bottom: 16px; }
+      .card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+      .card-actions a { display: inline-flex; align-items: center; justify-content: center; flex: 1 1 auto; min-height: 46px; max-width: 100%; padding: 10px 12px; border: 1px solid var(--primary); border-radius: 10px; background: var(--primary); color: var(--secondary); text-decoration: none; font-size: .875rem; font-weight: 650; line-height: 1.4; text-align: center; overflow-wrap: anywhere; }
+      .image-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--muted); font-size: .875rem; }
+      .image-fallback svg { width: 40px; height: 40px; }
+      .logo-fallback { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 10px; background: var(--primary); color: var(--secondary); font-weight: 800; font-size: 1.3rem; }
+      .empty-state { padding: 32px 16px; text-align: center; color: var(--muted); }
+      footer { padding: 32px 0 90px; text-align: center; font-size: .8125rem; color: var(--muted); }
+      .back-to-top { position: fixed; bottom: calc(16px + env(safe-area-inset-bottom)); right: 16px; z-index: 6; min-height: 48px; padding: 10px 16px; border: 2px solid white; border-radius: 24px; background: var(--secondary); color: white; box-shadow: 0 4px 16px #05214720; font-size: .875rem; font-weight: 600; }
+      .replace-dialog { position: fixed; inset: 0; margin: auto; width: min(440px, calc(100% - 32px)); max-height: calc(100svh - 32px); overflow-y: auto; border: none; border-radius: 20px; padding: 24px; color: var(--secondary); background: white; }
+      .replace-dialog::backdrop { background: #052147b3; }
       .replace-dialog h2 { font-size: 1.2rem; line-height: 1.3; margin-bottom: 10px; }
-      .replace-dialog p { font-size: 0.9rem; margin-bottom: 16px; }
+      .replace-dialog p { font-size: .9375rem; margin-bottom: 16px; }
       .replacement-options { display: grid; gap: 10px; }
       .replacement-option { text-align: left; justify-content: flex-start; min-height: 52px; }
       .dialog-cancel { width: 100%; margin-top: 16px; }
-      .favorite-button[aria-pressed="true"]:hover { background: #ff8b39; color: white; }
-      /* Movimento discreto, com alternativa para quem prefere menos animações. */
-      .logo-fallback { min-width: 56px; min-height: 56px; font-size: 1.6rem; }
-      .card { transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease; }
-      .card.card-enter { animation: card-appear 600ms cubic-bezier(.2,.7,.2,1) both; }
-      @keyframes card-appear {
-        from { opacity: 0; transform: translateY(24px); }
-        to { opacity: 1; transform: translateY(0); }
+      .grid.is-list { grid-template-columns: 1fr; gap: 10px; }
+      .is-list .card { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; align-items: center; padding: 14px; }
+      .is-list .card img, .is-list .image-fallback, .is-list .featured-label, .is-list .card > p { display: none; }
+      .is-list .card-toolbar { grid-column: 2; grid-row: 1; margin: 0; }
+      .is-list .favorite-text { display: none; }
+      .is-list .favorite-button { width: 44px; }
+      .is-list .card h2 { grid-column: 1; grid-row: 1; margin: 0; font-size: 1rem; }
+      .is-list .card-actions { grid-column: 1 / -1; margin-top: 10px; }
+      @media (min-width: 640px) {
+        body { padding: 24px; }
+        .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        header h1 { font-size: 1.4rem; }
+        .catalog-controls { display: flex; align-items: center; gap: 12px; }
+        .search-tools { margin: 0; }
+        .is-list .card { grid-template-columns: minmax(160px, 1fr) auto minmax(180px, 1fr); }
+        .is-list .card-actions { grid-column: 3; grid-row: 1; margin-top: 0; justify-content: flex-end; }
+        .is-list .card-actions a { flex: 0 1 auto; }
       }
-      .card a, button {
-        -webkit-tap-highlight-color: transparent;
-        transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
+      @media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+      @media (max-width: 359px) {
+        body { padding: 12px; }
+        .search-tools { flex-wrap: wrap; }
+        .view-switch { margin-left: auto; }
+        .header-logo img { max-width: 52px; }
       }
-      .card a, .login-card button, .favorite-button, .tool-button, .reset-favorites {
-        position: relative;
-        overflow: hidden;
-        isolation: isolate;
-      }
-      .card a::after, .login-card button::after, .favorite-button::after, .tool-button::after {
-        content: ""; position: absolute; inset: 0; pointer-events: none;
-        background: linear-gradient(110deg, transparent 25%, #ffffff40 50%, transparent 75%);
-        transform: translateX(-125%); transition: transform 500ms ease;
-      }
-      .card a:focus-visible::after, .login-card button:focus-visible::after,
-      .favorite-button:focus-visible::after, .tool-button:focus-visible::after { transform: translateX(125%); }
-      .card a:active, button:not(:disabled):active { transform: scale(.97); }
-      .favorite-icon { display: inline-block; transition: transform 220ms ease; }
-      .favorite-button[aria-pressed="true"] .favorite-icon { transform: rotate(-10deg) scale(1.12); }
       @media (hover: hover) and (pointer: fine) {
-        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px #0521471a; }
-        .card a:hover, button:not(:disabled):hover { box-shadow: 0 5px 12px #05214720; }
-        .card a:hover::after, .login-card button:hover::after,
-        .favorite-button:hover::after, .tool-button:hover::after { transform: translateX(125%); }
+        .tool-button:hover, .favorite-button:hover, .logout:hover { background: #edf2f7; }
+        .card-actions a:hover, .login-card button:hover { background: #ff943f; }
+        .tool-button[aria-pressed="true"]:hover { background: #14375f; }
+        .favorite-button[aria-pressed="true"]:hover { background: #ffe2c9; }
       }
-      @media (prefers-reduced-motion: reduce) {
-        .card, .card a, button, .favorite-icon { transition: none; }
-        .card.card-enter { animation: none; }
-        .card:hover, .card a:active, button:not(:disabled):active { transform: none; }
-        .card a::after, .login-card button::after, .favorite-button::after, .tool-button::after { display: none; }
-      }
-      .field-label { display: block; text-align: left; font-size: .85rem; margin-bottom: 4px; }
-      .remember-option { display: flex; align-items: center; gap: 10px; text-align: left; font-size: .85rem; min-height: 48px; cursor: pointer; }
-      .login-card .remember-option input { width: 20px; height: 20px; min-height: 20px; margin: 0; flex-shrink: 0; accent-color: var(--primary); }
-      .login-card .login-help { text-align: left; font-size: .78rem; margin: 8px 0 16px; }
+      @media (prefers-reduced-motion: reduce) { button, .card a { transition: none; } }
     </style>
   </head>
   <body>
@@ -405,27 +184,31 @@
       </div>
 
       <section class="favorites-intro" aria-labelledby="favoritesTitle">
-        <h2 id="favoritesTitle">Suas construtoras em destaque</h2>
-        <p>Escolha até <strong>3 favoritas</strong> para aparecerem primeiro. Ao escolher outra, você decide qual destaque substituir.</p>
-        <p>Suas escolhas ficam salvas para seu usuário neste navegador.</p>
+        <div class="favorites-heading">
+          <h2 id="favoritesTitle">★ Minhas favoritas</h2>
+          <span id="favoritesCount" class="favorites-count">3/3</span>
+        </div>
+        <p>Suas construtoras preferidas aparecem primeiro.</p>
         <details class="manage-favorites">
-          <summary>Organizar meus destaques</summary>
+          <summary>Organizar favoritas</summary>
+          <p>Escolha até 3 construtoras pela estrela de cada card. Suas escolhas ficam salvas para seu usuário neste navegador.</p>
           <ol id="favoriteOrder" class="favorite-order" aria-label="Ordem dos destaques"></ol>
+          <button type="button" class="reset-favorites" id="resetFavorites">Restaurar destaques padrão</button>
         </details>
-        <button type="button" class="reset-favorites" id="resetFavorites">Restaurar destaques padrão</button>
       </section>
       <p id="favoritesStatus" class="favorites-status" role="status" aria-live="polite"></p>
-      <div class="search">
-        <input
-          type="text"
-          id="searchInput"
-          aria-label="Buscar construtora"
-          placeholder="Buscar construtora..."
-        />
-      </div>
-
-      <div class="search-tools" role="group" aria-label="Opções do catálogo">
-        <button type="button" class="tool-button" id="onlyFavorites" aria-pressed="false"><span aria-hidden="true">★</span> Somente favoritas</button>
+      <div class="catalog-controls">
+        <div class="search">
+          <input type="search" id="searchInput" aria-label="Buscar construtora"
+            placeholder="Qual construtora você procura?" autocomplete="off" />
+        </div>
+        <div class="search-tools">
+          <button type="button" class="tool-button" id="onlyFavorites" aria-pressed="false"><span aria-hidden="true">★</span> Favoritas</button>
+          <div class="view-switch" role="group" aria-label="Visualização do catálogo">
+            <button type="button" class="tool-button" id="viewCards" aria-pressed="true">Cards</button>
+            <button type="button" class="tool-button" id="viewList" aria-pressed="false">Lista</button>
+          </div>
+        </div>
       </div>
       <div class="results-bar">
         <p id="resultsCount" class="results-count" role="status" aria-live="polite"></p>
@@ -441,10 +224,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img
-            src="assets/img/guarita-mariooliveira.jpg"
-            alt="Imagem da Construtora"
-          />
+          <img data-src="assets/img/guarita-mariooliveira.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Construtora Santo Antonio</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -465,10 +245,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img
-            src="assets/img/entrada-portosetubal.jpeg"
-            alt="Imagem da Construtora"
-          />
+          <img data-src="assets/img/entrada-portosetubal.jpeg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Habita Engenharia</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -489,7 +266,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-timesquareresidence.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-timesquareresidence.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>BFC Construtora</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -510,10 +287,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img
-            src="assets/img/entrada-puertocervantes.jpg"
-            alt="Imagem da Construtora"
-          />
+          <img data-src="assets/img/entrada-puertocervantes.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Bittencourt Incorporação</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -534,7 +308,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/piscina-casamayor.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/piscina-casamayor.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Casa Orange</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -555,7 +329,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-spazioclassic.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-spazioclassic.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Conlar Empreendimentos</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -576,10 +350,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img
-            src="assets/img/entrada-startreciferesidence.jpg"
-            alt="Imagem da Construtora"
-          />
+          <img data-src="assets/img/entrada-startreciferesidence.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Construtora Baptista Leal</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -600,7 +371,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/praca-patio-solare.png" alt="Imagem da Construtora" />
+          <img data-src="assets/img/praca-patio-solare.png" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Construtora Carrilho</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -621,7 +392,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/piscina-valeguararapes.png" alt="Imagem da Construtora" />
+          <img data-src="assets/img/piscina-valeguararapes.png" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Construtora Casa Concreto</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -642,7 +413,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/piscina-parcbenvida.png" alt="Imagem da Construtora" />
+          <img data-src="assets/img/piscina-parcbenvida.png" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Construtora Ceta</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -663,7 +434,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-avnuehall.webp" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-avnuehall.webp" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Construtora Fama</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -684,7 +455,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/piscina-carneirosresidenceresort.webp" alt="Imagem da Construtora" />
+          <img data-src="assets/img/piscina-carneirosresidenceresort.webp" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Construtora Freitas</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -705,7 +476,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-paradorgaudi.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-paradorgaudi.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Construtora Malus</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -726,7 +497,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-moradabeberibe.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-moradabeberibe.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Construtora Tenda</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -747,7 +518,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/piscina-unicilvomeirelles.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/piscina-unicilvomeirelles.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Construtora União</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -773,7 +544,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/piscina-terrazzabeiramar.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/piscina-terrazzabeiramar.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Exata Engenharia</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -794,7 +565,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-        <img src="assets/img/entrada-pedestre.jpg" alt="Imagem da Construtora" />
+        <img data-src="assets/img/entrada-pedestre.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Fucale Construtora</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -811,7 +582,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-jardinsnelmadias.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-jardinsnelmadias.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Gabriel Bacelar</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -837,7 +608,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-splendore.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-splendore.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Incorporadora Ferreira Pinto</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -858,7 +629,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-beachclassnovocais.webp" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-beachclassnovocais.webp" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Moura Dubeux</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -879,7 +650,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/varanda-candeiasprince.webp" alt="Imagem da Construtora" />
+          <img data-src="assets/img/varanda-candeiasprince.webp" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Pernambuco Construtora</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -905,7 +676,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/sala-isamelo.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/sala-isamelo.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Renel Empreendimentos</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -926,7 +697,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-jardinsangelavieira.png" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-jardinsangelavieira.png" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Rio Ave</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -952,7 +723,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-plazamayor.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-plazamayor.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Tecla Construtora</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -973,7 +744,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/rooftop-praia-de-gameleira.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/rooftop-praia-de-gameleira.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Tenório Incorporações</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -994,7 +765,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-luardoparque.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-luardoparque.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Torque Construções</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -1015,7 +786,7 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="assets/img/entrada-amazonas.jpg" alt="Imagem da Construtora" />
+          <img data-src="assets/img/entrada-amazonas.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
           <h2>Vale do Ave</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
@@ -1030,15 +801,7 @@
 
       <p class="empty-state" id="emptyState" hidden>Nenhuma construtora encontrada. Tente outro nome.</p>
 
-      <footer
-        style="
-          margin-top: 32px;
-          padding: 16px 0;
-          text-align: center;
-          font-size: 0.8rem;
-          color: var(--muted);
-        "
-      >
+      <footer>
         © 2026 • Catálogo interno da imobiliária • Uso exclusivo dos corretores
       </footer>
     </div>
@@ -1203,8 +966,10 @@
         document.getElementById("app").style.display = "block";
         searchInput.value = "";
         onlyFavorites.setAttribute("aria-pressed", "false");
-        document.getElementById("sessionInfo").textContent = currentSession.user +
-          " • Novo login até " + new Date(currentSession.expiresAt).toLocaleString("pt-BR");
+        const sessionInfo = document.getElementById("sessionInfo");
+        sessionInfo.textContent = currentSession.user;
+        sessionInfo.title = "Novo login até " + new Date(currentSession.expiresAt).toLocaleString("pt-BR");
+        restoreView();
         loadFavorites();
         renderCatalog();
         clearTimeout(expiryTimer);
@@ -1273,6 +1038,40 @@
         empty.textContent = favoritesOnly && !favorites.length
           ? "Você ainda não tem favoritas. Limpe os filtros e toque em Favoritar para escolher."
           : "Nenhuma construtora encontrada. Tente outro nome ou limpe os filtros.";
+        loadVisibleImages();
+      }
+
+      // A visualização é uma preferência individual neste navegador.
+      const viewKey = () => "catalogo:visualizacao:v1:" + (currentSession?.user || "");
+      function applyView(mode) {
+        const list = mode === "list";
+        catalog.classList.toggle("is-list", list);
+        document.getElementById("viewCards").setAttribute("aria-pressed", String(!list));
+        document.getElementById("viewList").setAttribute("aria-pressed", String(list));
+      }
+      function restoreView() {
+        applyView(readStored("localStorage", viewKey()) === "list" ? "list" : "cards");
+      }
+      function setView(mode) {
+        applyView(mode);
+        try { localStorage.setItem(viewKey(), mode); } catch { /* Mantém a escolha nesta página. */ }
+        loadVisibleImages();
+      }
+      document.getElementById("viewCards").addEventListener("click", () => setView("cards"));
+      document.getElementById("viewList").addEventListener("click", () => setView("list"));
+      function loadVisibleImages() {
+        if (!currentSession || catalog.classList.contains("is-list")) return;
+        let index = 0;
+        // Uma, duas ou três imagens iniciais, de acordo com a largura da grade.
+        const initialCount = window.matchMedia("(min-width: 1024px)").matches ? 3
+          : window.matchMedia("(min-width: 640px)").matches ? 2 : 1;
+        Array.from(catalog.children).forEach(card => {
+          if (card.hidden) return;
+          const img = card.querySelector("img");
+          if (!img) return;
+          img.loading = index++ < initialCount ? "eager" : "lazy";
+          if (!img.getAttribute("src")) img.src = img.dataset.src;
+        });
       }
 
       function renderCatalog() {
@@ -1287,19 +1086,24 @@
         sorted.forEach(card => {
           const name = nameOf(card);
           const selected = favorites.includes(name);
-          const feedback = card.querySelector(".favorite-feedback");
-          if (feedback) feedback.remove();
-          card.classList.toggle("is-featured", selected);
-          card.querySelector(".featured-label").hidden = !selected;
           const button = card.querySelector(".favorite-button");
-          button.setAttribute("aria-pressed", String(selected));
-          button.setAttribute("aria-label", (selected ? "Remover dos favoritos: " : "Favoritar: ") + name);
-          button.querySelector(".favorite-icon").textContent = selected ? "★" : "☆";
-          button.querySelector(".favorite-text").textContent = selected ? "Favoritada" : "Favoritar";
-          catalog.appendChild(card);
+          if (button.getAttribute("aria-pressed") !== String(selected)) {
+            card.classList.toggle("is-featured", selected);
+            card.querySelector(".featured-label").hidden = !selected;
+            button.setAttribute("aria-pressed", String(selected));
+            button.setAttribute("aria-label", (selected ? "Remover dos favoritos: " : "Favoritar: ") + name);
+            button.querySelector(".favorite-icon").textContent = selected ? "★" : "☆";
+            button.querySelector(".favorite-text").textContent = selected ? "Favoritada" : "Favoritar";
+          }
+        });
+        // Move apenas os elementos fora de ordem, mantendo ordem visual e de teclado iguais.
+        sorted.forEach((card, index) => {
+          const current = catalog.children[index];
+          if (current !== card) catalog.insertBefore(card, current || null);
         });
         filterCatalog();
         renderFavoriteOrder();
+        document.getElementById("favoritesCount").textContent = favorites.length + "/3";
       }
 
       cards.forEach(card => {
@@ -1318,7 +1122,7 @@
             saveFavorites(name + " adicionada aos destaques.");
           }
           renderCatalog();
-          button.focus({ preventScroll: true });
+          (card.hidden ? searchInput : button).focus({ preventScroll: true });
         });
       });
 
@@ -1437,7 +1241,6 @@
         const card = img.closest(".card");
         if (card) {
           img.alt = "Empreendimento — " + nameOf(card);
-          img.loading = "lazy";
           img.decoding = "async";
         }
         const showFallback = () => {
@@ -1458,26 +1261,8 @@
           img.after(placeholder);
         };
         img.addEventListener("error", showFallback);
-        if (img.complete && img.naturalWidth === 0) showFallback();
+        if (img.getAttribute("src") && img.complete && img.naturalWidth === 0) showFallback();
       });
-
-      // Anima cada card uma vez ao entrar na tela, sem esconder conteúdo se JS falhar.
-      const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-      if ("IntersectionObserver" in window) {
-        const cardObserver = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            if (!motionPreference.matches) entry.target.classList.add("card-enter");
-            cardObserver.unobserve(entry.target);
-          });
-        }, { threshold: 0.08 });
-        cards.forEach(card => {
-          card.addEventListener("animationend", event => {
-            if (event.animationName === "card-appear") card.classList.remove("card-enter");
-          });
-          cardObserver.observe(card);
-        });
-      }
 
       // Sessões antigas sem prazo não são aproveitadas; os favoritos são preservados.
       removeStored("localStorage", "auth");
