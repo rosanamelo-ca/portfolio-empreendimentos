@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catálogo de Construtoras</title>
+    <link rel="icon" type="image/png" href="assets/img/logo-laranja.png" />
+    <link rel="apple-touch-icon" href="assets/img/logo-laranja.png" />
     <style>
       :root {
         --primary: #ff710d;
@@ -352,23 +354,38 @@
         .card:hover, .card a:active, button:not(:disabled):active { transform: none; }
         .card a::after, .login-card button::after, .favorite-button::after, .tool-button::after { display: none; }
       }
+      .field-label { display: block; text-align: left; font-size: .85rem; margin-bottom: 4px; }
+      .remember-option { display: flex; align-items: center; gap: 10px; text-align: left; font-size: .85rem; min-height: 48px; cursor: pointer; }
+      .login-card .remember-option input { width: 20px; height: 20px; min-height: 20px; margin: 0; flex-shrink: 0; accent-color: var(--primary); }
+      .login-card .login-help { text-align: left; font-size: .78rem; margin: 8px 0 16px; }
     </style>
   </head>
   <body>
     <!-- LOGIN -->
     <div class="login-container" id="login">
-      <div class="login-card">
+      <form class="login-card" id="loginForm">
         <div class="login-logo">
           <!-- LOGO DA IMOBILIÁRIA (LOGIN) -->
           <img src="assets/img/logo-laranja.png" alt="Logo da Imobiliária" />
         </div>
         <h1>Área do Corretor</h1>
         <p>Acesso ao catálogo das construtoras</p>
-        <input type="text" id="user" placeholder="Usuário" />
-        <input type="password" id="pass" placeholder="Senha" />
-        <button onclick="login()">Entrar</button>
-        <div class="error" id="error">Usuário ou senha inválidos</div>
-      </div>
+        <label class="field-label" for="user">Usuário</label>
+        <input type="text" id="user" name="username" placeholder="Usuário"
+          autocomplete="username" autocapitalize="none" spellcheck="false" required />
+        <label class="field-label" for="pass">Senha</label>
+        <input type="password" id="pass" name="password" placeholder="Senha"
+          autocomplete="current-password" required />
+        <label class="remember-option" for="rememberLogin">
+          <input type="checkbox" id="rememberLogin" />
+          <span>Manter conectado por até 7 dias</span>
+        </label>
+        <p class="login-help">Use esta opção apenas em um dispositivo pessoal.
+          Desmarcada, o acesso fica salvo apenas nesta aba. Sua senha não é salva por esta opção.</p>
+        <button type="submit">Entrar</button>
+        <div class="error" id="error" role="alert"></div>
+        <noscript>Ative o JavaScript para usar o catálogo.</noscript>
+      </form>
     </div>
 
     <!-- CATÁLOGO -->
@@ -381,7 +398,7 @@
           </div>
           <div>
             <h1 id="catalogTitle" tabindex="-1">Catálogo de Construtoras</h1>
-            <p>Consulta para corretores</p>
+            <p id="sessionInfo">Consulta para corretores</p>
           </div>
         </header>
         <button class="logout" onclick="logout()">Sair</button>
@@ -433,7 +450,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1IDkuGjVNoe6k-sjT4Hr7AM4AFzt61o41"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -457,7 +474,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1zyEw5pszMucYEBh4OCOaU2JyCSO7g8h8"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -478,7 +495,7 @@
           <div class="card-actions">
             <a
               href="https://drive.google.com/drive/folders/1s7n0hvuNp2AJkBVDSZwQtCl3D_Yh7F3Y"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               >Acessar drive</a
             >
           </div>
@@ -502,7 +519,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1MTGsjI8BKM7BO694hOVMHpvf22lJMoLo"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -523,7 +540,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1opPm5o3S586YA_wNw1wfMiaoafeQHzBB"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -544,7 +561,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1gOhjWKWy-51lR5SMmTP_PuNmemc7e6yj"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -568,7 +585,7 @@
           <div class="card-actions">
             <a
             href="https://workdrive.zohoexternal.com/external/5c63b12ed9707132f840e5d6665a9ea183a08f915ebfb2b9634f9a5fb163677e?layout=list"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -589,7 +606,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/12gEEsYb0S43zoFVnOg_9cl9LHLhp-pLx"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -604,13 +621,13 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="/assets/img/piscina-valeguararapes.png" alt="Imagem da Construtora" />
+          <img src="assets/img/piscina-valeguararapes.png" alt="Imagem da Construtora" />
           <h2>Construtora Casa Concreto</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1Cxqid9J5YWwGLWUM6qy8kEHktSQPKe4I"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Vale dos Guararapes</a
           >
           </div>
@@ -631,7 +648,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1-7Xz8de20hjimQnqSxDWQjMW5U8gr8am"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -652,7 +669,7 @@
           <div class="card-actions">
             <a
               href="https://docs.google.com/document/d/1IHHrJdCGs6_9dlvYJh_ebEC3MEiYMJheNLeXmJ4FLKE/edit?tab=t.0"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               >Materiais e tabelas</a
             >
           </div>
@@ -667,13 +684,13 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="/assets/img/piscina-carneirosresidenceresort.webp" alt="Imagem da Construtora" />
+          <img src="assets/img/piscina-carneirosresidenceresort.webp" alt="Imagem da Construtora" />
           <h2>Construtora Freitas</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1tw3ItJ1ip1QneLVoYLMIGS0SY1CeCrx6"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -688,13 +705,13 @@
             </button>
           </div>
           <!-- IMAGEM DA CONSTRUTORA -->
-          <img src="/assets/img/entrada-paradorgaudi.jpg" alt="Imagem da Construtora" />
+          <img src="assets/img/entrada-paradorgaudi.jpg" alt="Imagem da Construtora" />
           <h2>Construtora Malus</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1nHwQW--gUpH-Wgw0DFkCLsvCQL3oRD2I"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -715,7 +732,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1Z-etGuyDmoCB9gqHtqvM6U5c9k91xbbE"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -736,12 +753,12 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1p0pVBI7V5uFzlhVcT6WShrtPrBAESmOX"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Unic Japaratinga</a
           >
           <a
             href="https://drive.google.com/drive/folders/1caYPoKdZh4LxUxmOhAtHEPt4Dh_y2Bab"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Unic Ilvo Meirelles</a
           >
           </div>
@@ -762,7 +779,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1UBP0tg1yNBSfLfvkBc8h8rDhxSNt0QXH"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -781,7 +798,7 @@
           <h2>Fucale Construtora</h2>
           <p>Empreendimentos residenciais</p>
           <div class="card-actions">
-            <a href="https://drive.google.com/drive/folders/1JrNvIzs2Zh6kJ8jAkeVbIzHj2fJgJlXY" target="_blank">Elevare</a>
+            <a href="https://drive.google.com/drive/folders/1JrNvIzs2Zh6kJ8jAkeVbIzHj2fJgJlXY" target="_blank" rel="noopener noreferrer">Elevare</a>
           </div>
         </div>
 
@@ -800,12 +817,12 @@
           <div class="card-actions">
             <a
             href="https://www.dropbox.com/scl/fo/wuq2450pdyn1tn2il6udx/AFgJQqg52zTZx4bCe1Rbz-Q?rlkey=appy51xl1rxtex8cckm5pzdd5&st=mf2corg9&e=1&dl=0"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Incorporação</a
           >
           <a
             href="https://www.dropbox.com/scl/fo/vte9ln6ap9k9tozjgcm7i/AEZJs4CDHNOYOtz-EjBqa8E?rlkey=s3xaejejx1bjlu05i26h630k2&st=lzcntg0y&e=1&dl=0"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Condomínio fechado</a
           >
           </div>
@@ -826,7 +843,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/file/d/1-dB4hyXUpRxjN4pjWjKFAWZoGRhNunNy/view"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -847,7 +864,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1gC2WULRs1WBp0Aw-W1LcWlwa98JSvyZP"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -868,12 +885,12 @@
           <div class="card-actions">
             <a
               href="https://drive.google.com/drive/folders/1as7vgCTG-YM2gW9jI0ylcVf-mNB87g-U"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               >Materiais</a
             >
             <a
               href="https://drive.google.com/drive/folders/1fpl4nn-8-f5SmOazYQ2RxREjW0lnk-w8"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               >Tabelas</a
             >
           </div>
@@ -894,7 +911,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1vpHOrp6jkMQvbHbiGq44Nz8N2h9bve3H"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -915,12 +932,12 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/14boQchLHJ1DrwDYOAVYJq92moN1-f_Cy"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Materiais</a
           >
           <a
             href="https://drive.google.com/drive/folders/1sPMt7zBGf5Z94n3L7SYyo6PhSLYCKp1V"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Tabelas</a
           >
           </div>
@@ -941,7 +958,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1VWMaTy-XV9kn-OWzoUqLZaPxpKCj4bmf"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -962,7 +979,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1zrg9XyvkzobVMNwhfhCq-PIJ9Qek-1Oa"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -983,7 +1000,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1UoJn1VzUIhZKRZWc2oq66JhSoSNzqzWB"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -1004,7 +1021,7 @@
           <div class="card-actions">
             <a
             href="https://drive.google.com/drive/folders/1ZSCzqXU8cYYJk1bH8AyiQnCZUB12SzXa"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             >Acessar drive</a
           >
           </div>
@@ -1036,51 +1053,163 @@
     <script>
       /*************************************************
        * CONFIGURAÇÃO DE USUÁRIOS (LOGINS)
-       * Adicione quantos corretores quiser aqui
+       * Compatibilidade com o projeto estático existente: NÃO é autenticação segura.
+       * Senhas e catálogo ficam públicos no código-fonte. Para proteção real,
+       * migre usuários, sessões e conteúdo restrito para um servidor.
+       * active: false desabilita o usuário nesta versão do arquivo.
+       * Incremente sessionVersion ao trocar senha ou invalidar sessões locais.
+       * Alterações só chegam a quem carregar a versão atualizada da página.
        *************************************************/
       const USERS = [
-        { user: "Wilion", pass: "@Wg859073401" },
-        { user: "Rosana", pass: "12345" },
+        { user: "Admin", pass: "81993939180", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.adeildo", pass: "81999987630", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.alessandrak", pass: "81998838435", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.cassiowavrik", pass: "81996187592", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.claudiap", pass: "81973074969", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.fernandom", pass: "81986218644", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.gabrielaf", pass: "81987422021", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.glauber", pass: "81997196777", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.jamersson", pass: "81992038504", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.jaimesilva", pass: "81999742288", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.handersonmichel", pass: "81992046708", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.mike", pass: "81994403330", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.pamelak", pass: "11952033642", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.rafaelacristina", pass: "81999117874", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.rayssaleal", pass: "81982861425", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.robsonoliveira", pass: "81986783462", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.rochellymelo", pass: "81988227627", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.rosanamelo", pass: "81999813101", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.rosemere", pass: "81992047412", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.ubiratanc", pass: "81998043658", active: true, sessionVersion: 1 },
+        { user: "rosanamelo.wilka", pass: "81982869571", active: true, sessionVersion: 1 },
       ];
 
-      /*************************************************
-       * LOGIN
-       *************************************************/
-      function login() {
-        const u = document.getElementById("user").value.trim();
-        const p = document.getElementById("pass").value.trim();
-        const error = document.getElementById("error");
+      // Controle de conveniência LOCAL. O navegador não é uma autoridade de segurança.
+      const SESSION_KEY = "catalogo:sessao:v2";
+      const LOGOUT_KEY = "catalogo:saida:v2";
+      const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000;
+      let currentSession = null;
+      let expiryTimer = null;
+      let memoryOnly = false;
 
-        const autorizado = USERS.find(
-          (item) => item.user === u && item.pass === p
-        );
-
-        if (autorizado) {
-          localStorage.setItem("auth", "true");
-          localStorage.setItem("usuario", u);
-          showApp();
-        } else {
-          error.style.display = "block";
+      function readStored(storageName, key) {
+        try { return window[storageName].getItem(key); }
+        catch { return null; }
+      }
+      function removeStored(storageName, key) {
+        try { window[storageName].removeItem(key); } catch { /* Armazenamento bloqueado. */ }
+      }
+      function readSession() {
+        // A sessão desta aba tem prioridade sobre a persistente de outro usuário.
+        const raw = readStored("sessionStorage", SESSION_KEY) || readStored("localStorage", SESSION_KEY);
+        if (!raw) return null;
+        try { return JSON.parse(raw); }
+        catch {
+          removeStored("sessionStorage", SESSION_KEY);
+          removeStored("localStorage", SESSION_KEY);
+          return null;
         }
       }
-
-      /*************************************************
-       * LOGOUT
-       *************************************************/
-      function logout() {
-        localStorage.removeItem("auth");
-        localStorage.removeItem("usuario");
-        location.reload();
+      function validSession(session, now = Date.now()) {
+        if (!session || typeof session.user !== "string" || typeof session.remember !== "boolean") return false;
+        const account = USERS.find(item => item.user === session.user && item.active !== false);
+        return Boolean(account && session.version === account.sessionVersion &&
+          Number.isSafeInteger(session.issuedAt) && Number.isSafeInteger(session.expiresAt) &&
+          session.issuedAt <= now && session.expiresAt === session.issuedAt + SESSION_DURATION &&
+          now < session.expiresAt);
       }
-
-      /*************************************************
-       * MOSTRAR APLICAÇÃO
-       *************************************************/
+      function showLoginMessage(message) {
+        const error = document.getElementById("error");
+        error.textContent = message;
+        error.style.display = message ? "block" : "none";
+      }
+      function login() {
+        const u = document.getElementById("user").value.trim();
+        const p = document.getElementById("pass").value;
+        const account = USERS.find(item => item.user === u && item.pass === p && item.active !== false);
+        if (!account) {
+          showLoginMessage("Usuário ou senha inválidos, ou acesso desativado.");
+          return;
+        }
+        const now = Date.now();
+        const remember = document.getElementById("rememberLogin").checked;
+        currentSession = {
+          user: account.user, version: account.sessionVersion,
+          issuedAt: now, expiresAt: now + SESSION_DURATION, remember
+        };
+        removeStored("localStorage", SESSION_KEY);
+        removeStored("sessionStorage", SESSION_KEY);
+        memoryOnly = false;
+        try {
+          window[remember ? "localStorage" : "sessionStorage"].setItem(SESSION_KEY, JSON.stringify(currentSession));
+        } catch { memoryOnly = true; }
+        document.getElementById("pass").value = "";
+        showLoginMessage("");
+        showApp();
+        if (memoryOnly) {
+          status.textContent = "Seu navegador bloqueou o armazenamento. Você precisará entrar novamente ao recarregar a página.";
+        }
+        document.getElementById("catalogTitle").focus();
+      }
+      function endSession(message = "") {
+        clearTimeout(expiryTimer);
+        const ended = currentSession;
+        currentSession = null;
+        memoryOnly = false;
+        ["localStorage", "sessionStorage"].forEach(storageName => {
+          // Não apague uma nova sessão criada por outro usuário em outra aba.
+          try {
+            const saved = JSON.parse(readStored(storageName, SESSION_KEY));
+            if (!ended || !saved || (saved.user === ended.user && saved.issuedAt === ended.issuedAt)) {
+              removeStored(storageName, SESSION_KEY);
+            }
+          } catch { removeStored(storageName, SESSION_KEY); }
+        });
+        removeStored("localStorage", "auth");
+        removeStored("localStorage", "usuario");
+        if (replacementDialog.open) replacementDialog.close();
+        pendingReplacement = null;
+        replacementTrigger = null;
+        favorites = [];
+        document.getElementById("favoriteOrder").replaceChildren();
+        document.getElementById("favoritesStatus").textContent = "";
+        document.getElementById("sessionInfo").textContent = "Consulta para corretores";
+        document.getElementById("app").style.display = "none";
+        document.getElementById("login").style.display = "flex";
+        document.getElementById("backToTop").hidden = true;
+        document.getElementById("pass").value = "";
+        showLoginMessage(message);
+        document.getElementById("user").focus();
+      }
+      function logout() {
+        const user = currentSession?.user;
+        endSession("Você saiu da conta. Seus favoritos foram preservados.");
+        try {
+          localStorage.setItem(LOGOUT_KEY, JSON.stringify({ user, at: Date.now(), nonce: Math.random() }));
+        } catch { /* A saída nesta página funciona mesmo sem armazenamento. */ }
+      }
+      function checkSession() {
+        if (!currentSession) return false;
+        const saved = memoryOnly ? currentSession : readSession();
+        if (!validSession(currentSession) || !validSession(saved) ||
+            saved.user !== currentSession.user || saved.issuedAt !== currentSession.issuedAt) {
+          endSession("Sua sessão terminou. Faça login novamente para continuar.");
+          return false;
+        }
+        return true;
+      }
       function showApp() {
         document.getElementById("login").style.display = "none";
         document.getElementById("app").style.display = "block";
+        searchInput.value = "";
+        onlyFavorites.setAttribute("aria-pressed", "false");
+        document.getElementById("sessionInfo").textContent = currentSession.user +
+          " • Novo login até " + new Date(currentSession.expiresAt).toLocaleString("pt-BR");
         loadFavorites();
         renderCatalog();
+        clearTimeout(expiryTimer);
+        // Prazo absoluto: visitar ou recarregar a página não renova os sete dias.
+        expiryTimer = setTimeout(checkSession, Math.max(0, currentSession.expiresAt - Date.now()));
       }
 
       const DEFAULT_FAVORITES = [
@@ -1099,7 +1228,7 @@
           .map(element => element.textContent).join(" "))
       ]));
       let favorites = [...DEFAULT_FAVORITES];
-      const favoriteKey = () => "catalogo:favoritos:v1:" + (localStorage.getItem("usuario") || "");
+      const favoriteKey = () => "catalogo:favoritos:v1:" + (currentSession?.user || "");
 
       function loadFavorites() {
         favorites = [...DEFAULT_FAVORITES];
@@ -1199,8 +1328,9 @@
         renderCatalog();
       });
       searchInput.addEventListener("input", filterCatalog);
-      document.getElementById("pass").addEventListener("keydown", event => {
-        if (event.key === "Enter") login();
+      document.getElementById("loginForm").addEventListener("submit", event => {
+        event.preventDefault();
+        login();
       });
       const onlyFavorites = document.getElementById("onlyFavorites");
       const clearSearch = document.getElementById("clearSearch");
@@ -1280,6 +1410,11 @@
       document.getElementById("cancelReplacement").addEventListener("click", () => replacementDialog.close());
       replacementDialog.addEventListener("close", () => {
         pendingReplacement = null;
+        if (!currentSession) {
+          replacementTrigger = null;
+          document.getElementById("user").focus();
+          return;
+        }
         if (replacementTrigger && !replacementTrigger.closest(".card").hidden) {
           replacementTrigger.focus({ preventScroll: true });
         } else searchInput.focus({ preventScroll: true });
@@ -1296,8 +1431,15 @@
         document.getElementById("catalogTitle").focus({ preventScroll: true });
       });
 
-      // Preserve original image URLs. Show a local placeholder if loading fails.
+      // Os caminhos são relativos à página, inclusive em sites publicados em subpastas.
+      // Se um arquivo estiver ausente, mantenha uma indicação acessível de falha.
       document.querySelectorAll("img").forEach(img => {
+        const card = img.closest(".card");
+        if (card) {
+          img.alt = "Empreendimento — " + nameOf(card);
+          img.loading = "lazy";
+          img.decoding = "async";
+        }
         const showFallback = () => {
           if (img.dataset.fallbackShown) return;
           img.dataset.fallbackShown = "true";
@@ -1337,7 +1479,45 @@
         });
       }
 
-      if (localStorage.getItem("auth") === "true") showApp();
+      // Sessões antigas sem prazo não são aproveitadas; os favoritos são preservados.
+      removeStored("localStorage", "auth");
+      removeStored("localStorage", "usuario");
+      const restored = readSession();
+      if (restored && validSession(restored)) {
+        currentSession = restored;
+        showApp();
+      } else if (restored) {
+        endSession("Seu acesso expirou ou foi desativado. Faça login novamente.");
+      }
+      setInterval(checkSession, 15000);
+      window.addEventListener("focus", checkSession);
+      window.addEventListener("pageshow", checkSession);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) checkSession();
+      });
+      // Revalida antes de interações, mesmo se o navegador tiver suspendido os timers.
+      ["click", "submit", "keydown"].forEach(type => {
+        document.addEventListener(type, event => {
+          if (currentSession && !checkSession()) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+      });
+      window.addEventListener("storage", event => {
+        if (event.key === LOGOUT_KEY && currentSession) {
+          try {
+            if (JSON.parse(event.newValue)?.user === currentSession.user) {
+              endSession("Você saiu da conta em outra aba.");
+            }
+          } catch { /* Ignora mensagens inválidas. */ }
+        }
+        if (event.key === SESSION_KEY || event.key === null) checkSession();
+        if (currentSession && event.key === favoriteKey()) {
+          loadFavorites();
+          renderCatalog();
+        }
+      });
     </script>
   </body>
 </html>
