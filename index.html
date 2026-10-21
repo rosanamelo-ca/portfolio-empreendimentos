@@ -157,7 +157,7 @@
           autocomplete="current-password" required />
         <label class="remember-option" for="rememberLogin">
           <input type="checkbox" id="rememberLogin" />
-          <span>Manter conectado por até 7 dias</span>
+          <span>Manter conectado por até 30 dias</span>
         </label>
         <p class="login-help">Use esta opção apenas em um dispositivo pessoal.
           Desmarcada, o acesso fica salvo apenas nesta aba. Sua senha não é salva por esta opção.</p>
@@ -797,6 +797,27 @@
           >
           </div>
         </div>
+
+        <div class="card">
+          <div class="card-toolbar">
+            <span class="featured-label" hidden>Em destaque</span>
+            <button type="button" class="favorite-button" aria-pressed="false" aria-label="Favoritar: Vale do Ave">
+              <span class="favorite-icon" aria-hidden="true">☆</span>
+              <span class="favorite-text">Favoritar</span>
+            </button>
+          </div>
+          <!-- IMAGEM DA CONSTRUTORA -->
+          <img data-src="assets/img/varanda-prime-bv.jpg" alt="Imagem da Construtora" width="640" height="360" decoding="async" />
+          <h2>Hermano Nascimento</h2>
+          <p>Empreendimentos residenciais</p>
+          <div class="card-actions">
+            <a
+            href="https://drive.google.com/drive/folders/1lXpWbvnN1QpmfFCEDrhWPzoN8D4zfp0r"
+            target="_blank" rel="noopener noreferrer"
+            >Acessar drive</a
+          >
+          </div>
+        </div>
       </section>
 
       <p class="empty-state" id="emptyState" hidden>Nenhuma construtora encontrada. Tente outro nome.</p>
@@ -853,7 +874,7 @@
       // Controle de conveniência LOCAL. O navegador não é uma autoridade de segurança.
       const SESSION_KEY = "catalogo:sessao:v2";
       const LOGOUT_KEY = "catalogo:saida:v2";
-      const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000;
+      const SESSION_DURATION = 30 * 24 * 60 * 60 * 1000;
       let currentSession = null;
       let expiryTimer = null;
       let memoryOnly = false;
@@ -976,8 +997,9 @@
         loadFavorites();
         renderCatalog();
         clearTimeout(expiryTimer);
-        // Prazo absoluto: visitar ou recarregar a página não renova os sete dias.
-        expiryTimer = setTimeout(checkSession, Math.max(0, currentSession.expiresAt - Date.now()));
+        // Prazo absoluto: visitar ou recarregar a página não renova os 30 dias.
+        // Limita o timer ao máximo suportado; as verificações periódicas mantêm a expiração.
+        expiryTimer = setTimeout(checkSession, Math.min(2147483647, Math.max(0, currentSession.expiresAt - Date.now())));
       }
 
       const DEFAULT_FAVORITES = [
