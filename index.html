@@ -52,6 +52,51 @@
       header h1 { font-size: 1.15rem; line-height: 1.25; letter-spacing: -.025em; }
       header p { color: var(--muted); font-size: .8125rem; margin-top: 4px; overflow-wrap: anywhere; }
       .logout { flex-shrink: 0; min-height: 44px; padding: 8px 12px; border: 1px solid var(--border); background: white; border-radius: 10px; font-size: .875rem; font-weight: 600; }
+      /* Acesso rápido aos e-books com a identidade visual da imobiliária */
+      .ebooks-download {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin: 0 0 16px;
+        padding: 20px;
+        border: 1px solid #ffd0ad;
+        border-left: 5px solid var(--primary);
+        border-radius: var(--radius);
+        background: linear-gradient(110deg, #fff 0%, #fff5ed 100%);
+        box-shadow: 0 6px 20px #0521470a;
+      }
+      .ebooks-copy { flex: 1 1 240px; min-width: 0; }
+      .ebooks-kicker {
+        color: #a84700;
+        font-size: .75rem;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .ebooks-download h2 { font-size: 1.15rem; line-height: 1.3; margin-bottom: 5px; }
+      .ebooks-download p { color: var(--muted); font-size: .9rem; }
+      .ebooks-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 50px;
+        flex: 0 0 auto;
+        padding: 12px 18px;
+        border: 1px solid var(--primary);
+        border-radius: 12px;
+        background: var(--primary);
+        color: var(--secondary);
+        font-size: .9375rem;
+        font-weight: 750;
+        text-decoration: none;
+        box-shadow: 0 4px 10px #ff710d26;
+      }
+      .ebooks-button:hover { background: #ff943f; }
+      .ebooks-button svg { width: 20px; height: 20px; flex-shrink: 0; }
       .favorites-intro { background: var(--secondary); color: white; border-radius: var(--radius); padding: 14px 16px; margin-bottom: 12px; }
       .favorites-heading { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
       .favorites-intro h2 { font-size: 1rem; font-weight: 600; }
@@ -182,6 +227,29 @@
         </header>
         <button class="logout" onclick="logout()">Sair</button>
       </div>
+
+      <!-- DOWNLOAD DOS E-BOOKS: substitua o link abaixo pelo link compartilhável da pasta no Drive -->
+      <section class="ebooks-download" aria-labelledby="ebooksTitle">
+        <div class="ebooks-copy">
+          <p class="ebooks-kicker">Material de divulgação</p>
+          <h2 id="ebooksTitle">E-books com a identidade visual da imobiliária</h2>
+          <p>Baixe os materiais prontos para usar na divulgação dos empreendimentos.</p>
+        </div>
+        <a
+          class="ebooks-button"
+          href="https://drive.google.com/drive/folders/1Ah9qrMLnWvYw5abQck3IM4702YnrUMVE?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Abrir pasta de e-books no Google Drive"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <path d="m7 10 5 5 5-5"/>
+            <path d="M12 15V3"/>
+          </svg>
+          Baixar e-books
+        </a>
+      </section>
 
       <section class="favorites-intro" aria-labelledby="favoritesTitle">
         <div class="favorites-heading">
